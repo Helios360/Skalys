@@ -1,0 +1,122 @@
+<?php
+// Variables attendues (avec valeurs par défaut) :
+// $page_title   (string) — titre de la page
+// $page_desc    (string) — meta description
+// $show_loader  (bool)   — afficher l'écran de chargement (défaut : false)
+// $home_url     (string) — préfixe pour les liens de nav (défaut : 'home.php')
+$show_loader = $show_loader ?? false;
+$home_url    = $home_url    ?? 'home.php';
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><?= htmlspecialchars($page_title ?? 'Skalys — Business School') ?></title>
+<meta name="description" content="<?= htmlspecialchars($page_desc ?? '') ?>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,200..900;1,200..900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/main.css">
+<?php if (!empty($extra_css)): foreach ($extra_css as $css): ?>
+<link rel="stylesheet" href="<?= htmlspecialchars($css) ?>">
+<?php endforeach; endif; ?>
+</head>
+<body class="<?= $show_loader ? 'loading' : '' ?>">
+
+<?php if ($show_loader): ?>
+<!-- ===== LOADER ===== -->
+<div class="loader" id="loader">
+  <div class="loader-text">
+    <span class="ltr">S</span><span class="ltr">k</span><span class="ltr">a</span><span class="ltr">l</span><span class="ltr">y</span><span class="ltr">s</span>
+  </div>
+  <div class="loader-meta">
+    <span>Compiègne — France</span>
+    <span>2026 / Édition 01</span>
+  </div>
+  <div class="loader-bar"></div>
+</div>
+<?php endif; ?>
+
+<!-- ===== CURSOR ===== -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="scroll-prog" id="scrollProg"></div>
+
+<!-- ===== TOP TICKER ===== -->
+<div class="ticker-top">
+  <div class="ticker-track">
+    <span>
+      ✦ Bac → Bac+2 &nbsp;<span class="star">/</span>&nbsp; 100% Alternance &nbsp;<span class="star">/</span>&nbsp; Frais Pris en Charge &nbsp;<span class="star">/</span>&nbsp; Certifié Qualiopi &nbsp;<span class="star">/</span>&nbsp; Compiègne ✦ Bac → Bac+2 &nbsp;<span class="star">/</span>&nbsp; 100% Alternance &nbsp;<span class="star">/</span>&nbsp; Frais Pris en Charge &nbsp;<span class="star">/</span>&nbsp; Certifié Qualiopi &nbsp;<span class="star">/</span>&nbsp; Compiègne ✦ Bac → Bac+2 &nbsp;<span class="star">/</span>&nbsp; 100% Alternance &nbsp;<span class="star">/</span>&nbsp; Frais Pris en Charge &nbsp;<span class="star">/</span>&nbsp; Certifié Qualiopi &nbsp;<span class="star">/</span>&nbsp; Compiègne &nbsp;
+    </span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="main">
+  <div class="nav-inner">
+    <a href="<?= $home_url ?>" class="brand">
+      <img class="brand-mark" src="../assets/images/skalys-logo.webp">
+      <div>
+        Skalys
+        <small>Business School</small>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <a href="<?= $home_url ?>#formations">Formations <span class="chevron">&#8964;</span></a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-header">Nos formations</div>
+          <div class="nav-dropdown-body">
+            <?php foreach ($tabs as $key => $tab):
+              $tab_formations = array_filter($formations, fn($f) => $f['tab'] === $key);
+            ?>
+            <div class="nav-dropdown-group">
+              <span class="nav-dropdown-group-label"><?= htmlspecialchars($tab['label']) ?> — <?= htmlspecialchars($tab['niveau_label']) ?></span>
+              <?php foreach ($tab_formations as $f): ?>
+              <a href="formation.php?slug=<?= htmlspecialchars($f['slug']) ?>" class="nav-dropdown-item<?= !empty($f['a_venir']) ? ' nav-dropdown-item--avenir' : '' ?>">
+                <span class="nav-dropdown-badge"><?= htmlspecialchars($f['badge']) ?></span>
+                <span class="nav-dropdown-title"><?= htmlspecialchars($f['title']) ?></span>
+                <?php if (!empty($f['a_venir'])): ?>
+                  <span class="nav-avenir-tag">À venir</span>
+                <?php endif; ?>
+              </a>
+              <?php endforeach; ?>
+            </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </li>
+      <li><a href="<?= $home_url ?>#manifesto">Manifesto</a></li>
+      <li><a href="ia.php">IA</a></li>
+      <li class="has-dropdown">
+        <a href="<?= $home_url ?>#why">L'école <span class="chevron">&#8964;</span></a>
+        <div class="nav-dropdown nav-dropdown--simple">
+          <div class="nav-dropdown-body">
+            <div class="nav-dropdown-group">
+              <a href="equipe.php" class="nav-dropdown-item">
+                <span class="nav-dropdown-title">Notre équipe</span>
+              </a>
+              <a href="blog.php" class="nav-dropdown-item">
+                <span class="nav-dropdown-title">Blog</span>
+              </a>
+              <a href="faq.php" class="nav-dropdown-item">
+                <span class="nav-dropdown-title">FAQ</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="<?= $home_url ?>#process">Admission</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="recruter.php" class="btn">Recruter un alternant</a>
+      <a href="candidature.php" class="btn btn-yellow">Je candidate <span class="arrow">→</span></a>
+      <button class="menu-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>

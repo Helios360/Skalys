@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /components/
+Disallow: /data/
+Disallow: /.user.ini
+Disallow: /.htaccess
+
+Sitemap: https://skalys-bs.fr/sitemap.xml
