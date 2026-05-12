@@ -2,12 +2,112 @@
 require_once 'data/formations.php';
 
 $page_title       = 'Notre équipe — Skalys Business School';
-$page_desc        = 'Découvrez l\'équipe Skalys Business School : direction, administration et formateurs experts. Des professionnels engagés à Compiègne pour votre réussite en alternance.';
-$home_url         = 'home.php';
-$extra_css        = ['assets/css/equipe.css'];
-$sticky_cta_url   = 'candidature.php';
+$page_desc        = 'Découvrez l\'équipe Skalys Business School : direction, administration et formateurs experts. Des pros engagés à Compiègne pour votre alternance.';
+$home_url         = '/';
+$extra_css        = ['/assets/css/equipe.css'];
+$sticky_cta_url   = '/candidature.php';
 $sticky_cta_label = 'Je candidate';
-$page_js          = 'assets/js/equipe.js';
+$page_js          = '/assets/js/equipe.js';
+
+// Helper : initiales (max 2 lettres) pour les placeholders quand l'image manque.
+function equipe_initials(string $name): string {
+  $parts = preg_split('/\s+/', trim($name));
+  $out = '';
+  foreach ($parts as $p) {
+    if ($p === '') continue;
+    $out .= mb_substr($p, 0, 1);
+    if (mb_strlen($out) >= 2) break;
+  }
+  return mb_strtoupper($out);
+}
+
+// Helper : retourne le chemin si le fichier existe localement, sinon null.
+function equipe_resolve_image(?string $rel): ?string {
+  if (!$rel) return null;
+  $full = __DIR__ . DIRECTORY_SEPARATOR . ltrim($rel, '/');
+  return is_file($full) ? $rel : null;
+}
+
+// Helper : rendu d'une photo avec fallback initiales si l'image n'est pas dispo.
+function equipe_render_photo(array $m): string {
+  $img = equipe_resolve_image($m['image'] ?? null);
+  $alt = htmlspecialchars($m['name']);
+  if ($img) {
+    return '<img src="' . htmlspecialchars($img) . '" alt="' . $alt . '" width="800" height="800" loading="lazy">';
+  }
+  return '<div class="membre-placeholder" role="img" aria-label="' . $alt . '"><span>' . htmlspecialchars(equipe_initials($m['name'])) . '</span></div>';
+}
+
+$admin_team = [
+  ['name' => 'Abdelkader Barakat',  'role' => 'Directeur général',                                'tag' => 'Directeur général',     'image' => 'assets/images/abdel.webp'],
+  ['name' => 'Dorothée Bouvignies', 'role' => 'Responsable relations entreprises & recrutement',  'tag' => 'Relations entreprises', 'image' => 'assets/images/dorothee.webp'],
+  ['name' => 'Anouchka Blanchard',  'role' => 'Chargée des relations entreprises',                'tag' => 'Relations entreprises', 'image' => 'assets/images/anouchka.webp'],
+  ['name' => 'Laetitia Toussaints', 'role' => 'Responsable administrative & pédagogique',         'tag' => 'Administration',        'image' => 'assets/images/laeticia.webp'],
+  ['name' => 'Cassandre Bailly',    'role' => 'Chargée administrative',                           'tag' => 'Administration',        'image' => 'assets/images/cassandre.webp'],
+  ['name' => 'Ylann Lamien',        'role' => 'Chargé de communication',                          'tag' => 'Communication',         'image' => 'assets/images/ylann.webp'],
+];
+
+$formateurs_team = [
+  [
+    'name'  => 'Marc Patiou',
+    'role'  => 'Formateur — Commerce & Vente',
+    'speciality' => 'Commerce & Vente',
+    'image' => 'assets/images/marc-patiou.webp',
+    'bio'   => "25 ans d'expérience dans le commerce, l'immobilier et le conseil en entreprise. Expert en techniques de vente et en accompagnement commercial, il transmet une vision pragmatique et directement applicable du métier.",
+    'tags'  => ['BTS NDRC', 'TP NTC', 'Vente'],
+  ],
+  [
+    'name'  => 'Benjamin Jonneaux',
+    'role'  => 'Formateur — Digital & IA',
+    'speciality' => 'Digital & IA',
+    'image' => 'assets/images/benjamin-jonneau.webp',
+    'bio'   => "Spécialiste de la montée en compétences digitales, il accompagne les professionnels dans leur transformation numérique. Ses formations sont interactives, concrètes et directement applicables en entreprise.",
+    'tags'  => ['BTS NDRC', 'BTS GPME', 'Digital'],
+  ],
+  [
+    'name'  => 'Julie Marcheteau',
+    'role'  => 'Formatrice — LinkedIn & Marketing',
+    'speciality' => 'LinkedIn & Marketing',
+    'image' => 'assets/images/julie-marcheteau.webp',
+    'bio'   => "Ancienne directrice marketing dans l'industrie pharmaceutique, aujourd'hui stratège en personal branding et coach d'entrepreneurs sur LinkedIn. Elle forme à la visibilité professionnelle et au marketing de contenu.",
+    'tags'  => ['BTS NDRC', 'Marketing', 'Réseaux sociaux'],
+  ],
+  [
+    'name'  => 'Marion Fouquet',
+    'role'  => 'Formatrice — Communication & Gestion de projet',
+    'speciality' => 'Communication & Projet',
+    'image' => 'assets/images/marion-fouquet.webp',
+    'bio'   => "Fondatrice du cabinet Pilote, elle allie communication stratégique et gestion de projet. Ses cours sont axés sur des outils pratiques, directement utiles sur le terrain.",
+    'tags'  => ['BTS GPME', 'Communication', 'Projet'],
+  ],
+];
+
+$team_members = array_merge($admin_team, $formateurs_team);
+
+$jsonld_blocks = [
+  [
+    '@context' => 'https://schema.org',
+    '@graph'   => array_map(fn($m) => [
+      '@type'    => 'Person',
+      'name'     => $m['name'],
+      'jobTitle' => $m['role'],
+      'image'    => equipe_resolve_image($m['image'] ?? null),
+      'worksFor' => [
+        '@type' => 'EducationalOrganization',
+        'name'  => 'Skalys Business School',
+        'url'   => 'https://skalys-bs.fr/',
+      ],
+    ], $team_members),
+  ],
+  [
+    '@context' => 'https://schema.org',
+    '@type'    => 'BreadcrumbList',
+    'itemListElement' => [
+      ['@type' => 'ListItem', 'position' => 1, 'name' => 'Accueil',        'item' => 'https://skalys-bs.fr/'],
+      ['@type' => 'ListItem', 'position' => 2, 'name' => 'Notre équipe',   'item' => 'https://skalys-bs.fr/equipe.php'],
+    ],
+  ],
+];
 
 require 'components/header.php';
 ?>
@@ -16,8 +116,8 @@ require 'components/header.php';
 <section class="equipe-hero">
   <div class="equipe-hero-wrap">
     <div class="equipe-hero-inner">
-      <div class="section-label" style="color:rgba(244,239,227,0.55);">
-        <span class="num" style="color:var(--yellow);">→</span> Notre équipe
+      <div class="section-label section-label--on-dark">
+        <span class="num">→</span> Notre équipe
       </div>
       <h1>Des humains,<br><em>avant tout.</em></h1>
       <p class="equipe-hero-sub">Une école, c'est avant tout des personnes. Voici celles et ceux qui forment, accompagnent et soutiennent chaque alternant Skalys au quotidien.</p>
@@ -31,7 +131,7 @@ require 'components/header.php';
     </div>
 
     <div class="equipe-hero-portrait">
-      <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/brooke-cagle-g1Kr4Ozfoac-unsplash-scaled.jpg" alt="L'équipe Skalys Business School">
+      <img src="/assets/images/ecole.webp" alt="L'équipe Skalys Business School" width="1376" height="768" loading="eager" fetchpriority="high">
       <div class="equipe-hero-caption">Fig. 01 — Équipe Skalys, Compiègne 2026</div>
     </div>
   </div>
@@ -99,85 +199,20 @@ require 'components/header.php';
     </div>
 
     <div class="membres-grid stagger">
-
-      <div class="membre-card membre-card--large">
-        <div class="membre-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2026/04/DSC02135.webp" alt="Abdelkader Barakat" loading="lazy">
-          <div class="membre-overlay">
-            <span class="membre-role-tag">Directeur général</span>
-          </div>
-        </div>
-        <div class="membre-info">
-          <h3>Abdelkader Barakat</h3>
-          <span class="membre-role">Directeur général</span>
-        </div>
-      </div>
-
+      <?php foreach ($admin_team as $m): ?>
       <div class="membre-card">
         <div class="membre-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/doro-1-scaled-1.webp" alt="Dorothée Bouvignies" loading="lazy">
+          <?= equipe_render_photo($m) ?>
           <div class="membre-overlay">
-            <span class="membre-role-tag">Relations entreprises</span>
+            <span class="membre-role-tag"><?= htmlspecialchars($m['tag']) ?></span>
           </div>
         </div>
         <div class="membre-info">
-          <h3>Dorothée Bouvignies</h3>
-          <span class="membre-role">Responsable relations entreprises &amp; recrutement</span>
+          <h3><?= htmlspecialchars($m['name']) ?></h3>
+          <span class="membre-role"><?= htmlspecialchars($m['role']) ?></span>
         </div>
       </div>
-
-      <div class="membre-card">
-        <div class="membre-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2026/01/DSC01036-3-e1767608256973.webp" alt="Anouchka Blanchard" loading="lazy">
-          <div class="membre-overlay">
-            <span class="membre-role-tag">Relations entreprises</span>
-          </div>
-        </div>
-        <div class="membre-info">
-          <h3>Anouchka Blanchard</h3>
-          <span class="membre-role">Chargée des relations entreprises</span>
-        </div>
-      </div>
-
-      <div class="membre-card">
-        <div class="membre-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/WhatsApp-Image-2025-03-06-a-08.39.27_eb1dffff.webp" alt="Laetitia Toussaints" loading="lazy">
-          <div class="membre-overlay">
-            <span class="membre-role-tag">Administration</span>
-          </div>
-        </div>
-        <div class="membre-info">
-          <h3>Laetitia Toussaints</h3>
-          <span class="membre-role">Responsable administrative &amp; pédagogique</span>
-        </div>
-      </div>
-
-      <div class="membre-card">
-        <div class="membre-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/IMG-20250328-WA0000.webp" alt="Cassandre Bailly" loading="lazy">
-          <div class="membre-overlay">
-            <span class="membre-role-tag">Administration</span>
-          </div>
-        </div>
-        <div class="membre-info">
-          <h3>Cassandre Bailly</h3>
-          <span class="membre-role">Chargée administrative</span>
-        </div>
-      </div>
-
-      <div class="membre-card">
-        <div class="membre-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/YLANN-LAMIEN-PHOTO-PROFESSIONEL.webp" alt="Ylann Lamien" loading="lazy">
-          <div class="membre-overlay">
-            <span class="membre-role-tag">Communication</span>
-          </div>
-        </div>
-        <div class="membre-info">
-          <h3>Ylann Lamien</h3>
-          <span class="membre-role">Chargé de communication</span>
-        </div>
-      </div>
-
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -192,71 +227,23 @@ require 'components/header.php';
     </div>
 
     <div class="formateurs-grid stagger">
-
+      <?php foreach ($formateurs_team as $f): ?>
       <div class="formateur-card">
         <div class="formateur-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/marcpatiou-vh-HD1_reduite.jpg" alt="Marc Patiou" loading="lazy">
+          <?= equipe_render_photo($f) ?>
         </div>
         <div class="formateur-body">
-          <div class="formateur-specialite">Commerce &amp; Vente</div>
-          <h3>Marc Patiou</h3>
-          <p>25 ans d'expérience dans le commerce, l'immobilier et le conseil en entreprise. Expert en techniques de vente et en accompagnement commercial, il transmet une vision pragmatique et directement applicable du métier.</p>
+          <div class="formateur-specialite"><?= htmlspecialchars($f['speciality']) ?></div>
+          <h3><?= htmlspecialchars($f['name']) ?></h3>
+          <p><?= htmlspecialchars($f['bio']) ?></p>
           <div class="formateur-tags">
-            <span>BTS NDRC</span>
-            <span>TP NTC</span>
-            <span>Vente</span>
+            <?php foreach ($f['tags'] as $t): ?>
+            <span><?= htmlspecialchars($t) ?></span>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>
-
-      <div class="formateur-card">
-        <div class="formateur-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/2024-01-25-BENJAMIN-JONNEAU4719-1-e1766764325896.jpg" alt="Benjamin Jonneaux" loading="lazy">
-        </div>
-        <div class="formateur-body">
-          <div class="formateur-specialite">Digital &amp; IA</div>
-          <h3>Benjamin Jonneaux</h3>
-          <p>Spécialiste de la montée en compétences digitales, il accompagne les professionnels dans leur transformation numérique. Ses formations sont interactives, concrètes et directement applicables en entreprise.</p>
-          <div class="formateur-tags">
-            <span>BTS NDRC</span>
-            <span>BTS GPME</span>
-            <span>Digital</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="formateur-card">
-        <div class="formateur-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/JULIE_MARCHETEAU-17-scaled.jpg" alt="Julie Marcheteau" loading="lazy">
-        </div>
-        <div class="formateur-body">
-          <div class="formateur-specialite">LinkedIn &amp; Marketing</div>
-          <h3>Julie Marcheteau</h3>
-          <p>Ancienne directrice marketing dans l'industrie pharmaceutique, aujourd'hui stratège en personal branding et coach d'entrepreneurs sur LinkedIn. Elle forme à la visibilité professionnelle et au marketing de contenu.</p>
-          <div class="formateur-tags">
-            <span>BTS NDRC</span>
-            <span>Marketing</span>
-            <span>Réseaux sociaux</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="formateur-card">
-        <div class="formateur-photo">
-          <img src="https://skalys-bs.fr/wp-content/uploads/2025/12/Pilote-Marion-Fouquet-scaled.jpg" alt="Marion Fouquet" loading="lazy">
-        </div>
-        <div class="formateur-body">
-          <div class="formateur-specialite">Communication &amp; Gestion de projet</div>
-          <h3>Marion Fouquet</h3>
-          <p>Fondatrice du cabinet Pilote, elle allie communication stratégique et gestion de projet. Ses cours sont axés sur des outils pratiques, directement utiles sur le terrain.</p>
-          <div class="formateur-tags">
-            <span>BTS GPME</span>
-            <span>Communication</span>
-            <span>Projet</span>
-          </div>
-        </div>
-      </div>
-
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -264,14 +251,14 @@ require 'components/header.php';
 <!-- ===== CTA ===== -->
 <section class="equipe-cta">
   <div class="equipe-cta-inner">
-    <div class="section-label reveal" style="color:rgba(244,239,227,0.55);">
-      <span class="num" style="color:var(--yellow);">→</span> Rejoignez l'aventure
+    <div class="section-label section-label--on-dark reveal">
+      <span class="num">→</span> Rejoignez l'aventure
     </div>
     <h2 class="reveal">Prêt à intégrer<br><em>l'école ?</em></h2>
     <p class="reveal">Candidatez dès maintenant et rejoignez une promotion motivée, entourée d'une équipe qui vous accompagne jusqu'à l'emploi.</p>
     <div class="equipe-cta-actions reveal">
-      <a href="candidature.php" class="btn btn-yellow">Je candidate <span class="arrow">→</span></a>
-      <a href="recruter.php" class="btn equipe-btn-ghost">Recruter un alternant</a>
+      <a href="/candidature.php" class="btn btn-yellow">Je candidate <span class="arrow">→</span></a>
+      <a href="/recruter.php" class="btn equipe-btn-ghost">Recruter un alternant</a>
     </div>
   </div>
 </section>

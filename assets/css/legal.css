@@ -1,0 +1,163 @@
+/* ===== LEGAL PAGES (mentions légales, politique de confidentialité) ===== */
+
+.legal-hero {
+  position: relative;
+  padding: 12rem 0 5rem;
+  background: var(--navy);
+  color: var(--cream);
+  overflow: hidden;
+}
+.legal-hero-bg-text {
+  position: absolute;
+  bottom: -2.5rem;
+  left: -1rem;
+  font-family: var(--display);
+  font-size: clamp(8rem, 22vw, 22rem);
+  font-weight: 200;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: rgba(244, 239, 227, 0.04);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+.legal-hero-inner {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.legal-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 280;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 1.5rem 0 1rem;
+}
+.legal-hero h1 em { font-style: italic; color: var(--yellow); font-weight: 320; }
+.legal-hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 640px;
+  color: rgba(244, 239, 227, 0.75);
+}
+.legal-hero-meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 227, 0.55);
+  margin-top: 2rem;
+}
+
+.legal-body {
+  padding: 5rem 0 7rem;
+  background: var(--cream);
+}
+.legal-body-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.legal-section { margin-bottom: 3.5rem; }
+.legal-section:last-child { margin-bottom: 0; }
+
+.legal-section h2 {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 350;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+.legal-section h3 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  font-weight: 600;
+  margin: 1.8rem 0 0.7rem;
+}
+.legal-section p,
+.legal-section li {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--navy);
+  margin: 0 0 0.9rem;
+}
+.legal-section ul {
+  padding-left: 1.4rem;
+  margin: 0 0 1.2rem;
+}
+.legal-section ul li { margin-bottom: 0.4rem; }
+.legal-section a { color: var(--navy); text-decoration: underline; text-decoration-color: var(--yellow); text-underline-offset: 3px; }
+.legal-section a:hover { color: var(--yellow-bright); }
+.legal-section strong { font-weight: 600; }
+
+.legal-table {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 2fr;
+  border-top: 1px solid var(--border);
+}
+.legal-table > div {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.legal-table > div:nth-child(odd) {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+}
+
+.legal-todo {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  margin: 0 0.2rem;
+  background: var(--yellow-soft);
+  color: var(--navy);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+
+.legal-toc {
+  background: rgba(0, 0, 0, 0.03);
+  border-left: 3px solid var(--yellow);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 3rem;
+}
+.legal-toc-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 0.6rem;
+}
+.legal-toc ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.legal-toc a { color: var(--navy); text-decoration: none; }
+.legal-toc a:hover { color: var(--yellow-bright); }
+
+@media (max-width: 700px) {
+  .legal-hero { padding: 9rem 0 3.5rem; }
+  .legal-table { grid-template-columns: 1fr; }
+  .legal-table > div { padding: 0.5rem 0; border-bottom: none; }
+  .legal-table > div:nth-child(odd) { padding-bottom: 0.1rem; border-bottom: none; }
+  .legal-table > div:nth-child(even) { border-bottom: 1px solid var(--border); padding-bottom: 0.9rem; margin-bottom: 0.6rem; }
+}

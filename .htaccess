@@ -31,6 +31,16 @@ AddDefaultCharset UTF-8
   # RewriteCond %{HTTP_HOST} !^www\. [NC]
   # RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+  # --- Canonical: /home.php et /index.php → / (évite le duplicate content) ---
+  RewriteCond %{THE_REQUEST} \s/+(?:home|index)\.php[\s?] [NC]
+  RewriteRule ^ / [R=301,L]
+
+  # --- URLs propres pour les fiches formation : /formation/<slug> ---
+  RewriteRule ^formation/([a-z0-9-]+)/?$ formation.php?slug=$1 [L,QSA]
+
+  # --- Sitemap dynamique ---
+  RewriteRule ^sitemap\.xml$ sitemap.xml.php [L]
+
   # --- Bloquer l'accès direct aux dossiers internes ---
   RewriteRule ^(components|data)(/|$) - [F,L]
 </IfModule>
@@ -73,8 +83,7 @@ AddDefaultCharset UTF-8
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
   <FilesMatch "\.php$">
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
+    Header set Cache-Control "public, max-age=300, must-revalidate"
   </FilesMatch>
 </IfModule>
 
@@ -83,11 +92,12 @@ AddDefaultCharset UTF-8
 # ============================================================
 
 <IfModule mod_headers.c>
-  Header always set X-Content-Type-Options  "nosniff"
-  Header always set X-Frame-Options         "SAMEORIGIN"
-  Header always set X-XSS-Protection        "1; mode=block"
-  Header always set Referrer-Policy         "strict-origin-when-cross-origin"
-  Header always set Permissions-Policy      "geolocation=(), microphone=(), camera=()"
+  Header always set X-Content-Type-Options       "nosniff"
+  Header always set X-Frame-Options              "SAMEORIGIN"
+  Header always set Referrer-Policy              "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy           "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header always set Strict-Transport-Security    "max-age=31536000; includeSubDomains" env=HTTPS
+  Header always set Content-Security-Policy      "default-src 'self'; img-src 'self' data: https://staticmap.openstreetmap.de; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'"
 </IfModule>
 
 # ============================================================
@@ -105,4 +115,5 @@ AddDefaultCharset UTF-8
 
 ErrorDocument 404 /404.php
 ErrorDocument 403 /404.php
-ErrorDocument 500 /404.php
+# Pas d'ErrorDocument 500 : on laisse Apache afficher la vraie page d'erreur
+# pour ne pas masquer les incidents serveur en production.

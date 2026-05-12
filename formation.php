@@ -1,26 +1,95 @@
 <?php
 require_once 'data/formations.php';
 
-$slug = $_GET['slug'] ?? '';
+$raw_slug = $_GET['slug'] ?? '';
+$slug = (is_string($raw_slug) && preg_match('/^[a-z0-9-]{1,80}$/i', $raw_slug)) ? $raw_slug : '';
 $formation = null;
-foreach ($formations as $f) {
-  if ($f['slug'] === $slug) {
-    $formation = $f;
-    break;
+if ($slug !== '') {
+  foreach ($formations as $f) {
+    if ($f['slug'] === $slug) {
+      $formation = $f;
+      break;
+    }
   }
 }
 
 if (!$formation) {
-  header('Location: home.php');
+  header('Location: /', true, 302);
+  exit;
+}
+
+// 301 vers la pretty URL si on arrive en query string (formation.php?slug=...)
+$req_uri = $_SERVER['REQUEST_URI'] ?? '';
+if (strpos($req_uri, '/formation.php') === 0) {
+  header('Location: /formation/' . $formation['slug'], true, 301);
   exit;
 }
 
 $autres = array_filter($formations, fn($f) => $f['slug'] !== $formation['slug']);
 
-$page_title = htmlspecialchars($formation['badge']) . ' — ' . htmlspecialchars($formation['title']) . ' | Skalys';
-$page_desc  = htmlspecialchars($formation['desc']);
-$home_url   = 'home.php';
-$extra_css  = ['assets/css/formation.css'];
+$page_title = $formation['badge'] . ' — ' . $formation['title'] . ' | Skalys';
+$page_desc  = $formation['desc'];
+$home_url   = '/';
+$extra_css  = ['/assets/css/formation.css'];
+
+// Canonical en pretty URL (servi par le rewrite .htaccess)
+$canonical_url = 'https://skalys-bs.fr/formation/' . $formation['slug'];
+
+// Si la formation est "à venir", on demande aux moteurs de ne pas l'indexer pour l'instant
+if (!empty($formation['a_venir'])) {
+  $robots_meta = 'noindex, follow';
+}
+
+$jsonld_blocks = [
+  array_filter([
+    '@context'    => 'https://schema.org',
+    '@type'       => 'Course',
+    'name'        => $formation['title'],
+    'description' => $formation['desc'],
+    'url'         => $canonical_url,
+    'provider'    => [
+      '@type' => 'EducationalOrganization',
+      'name'  => 'Skalys Business School',
+      'url'   => 'https://skalys-bs.fr/',
+    ],
+    'inLanguage'         => 'fr-FR',
+    'educationalLevel'   => $formation['niveau']  ?? null,
+    'timeRequired'       => $formation['heures']  ?? null,
+    'coursePrerequisites'=> $formation['prereqs'] ?? null,
+    'hasCourseInstance'  => [
+      '@type'           => 'CourseInstance',
+      'courseMode'      => 'Blended',
+      'courseWorkload'  => $formation['heures'] ?? null,
+      'location'        => [
+        '@type'   => 'Place',
+        'name'    => 'Skalys Business School',
+        'address' => [
+          '@type'           => 'PostalAddress',
+          'streetAddress'   => '8 avenue Flandres Dunkerque',
+          'postalCode'      => '60200',
+          'addressLocality' => 'Compiègne',
+          'addressCountry'  => 'FR',
+        ],
+      ],
+    ],
+    'offers' => [
+      '@type'         => 'Offer',
+      'price'         => '0',
+      'priceCurrency' => 'EUR',
+      'category'      => 'Alternance — prise en charge OPCO',
+      'availability'  => 'https://schema.org/InStock',
+    ],
+  ]),
+  [
+    '@context' => 'https://schema.org',
+    '@type'    => 'BreadcrumbList',
+    'itemListElement' => [
+      ['@type' => 'ListItem', 'position' => 1, 'name' => 'Accueil',    'item' => 'https://skalys-bs.fr/'],
+      ['@type' => 'ListItem', 'position' => 2, 'name' => 'Formations', 'item' => 'https://skalys-bs.fr/#formations'],
+      ['@type' => 'ListItem', 'position' => 3, 'name' => $formation['title'], 'item' => $canonical_url],
+    ],
+  ],
+];
 
 require 'components/header.php';
 ?>
@@ -68,7 +137,7 @@ require 'components/header.php';
     </div>
 
     <div class="formation-hero-cta">
-      <a href="candidature.php" class="btn btn-yellow">Je candidate <span class="arrow">→</span></a>
+      <a href="/candidature.php" class="btn btn-yellow">Je candidate <span class="arrow">→</span></a>
       <a href="#details" class="btn formation-btn-outline">Découvrir la formation</a>
     </div>
 

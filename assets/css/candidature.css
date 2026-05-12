@@ -189,6 +189,74 @@
   display: block;
   filter: grayscale(20%) contrast(1.05);
 }
+
+/* ===== Map — RGPD consent gate ===== */
+.map-consent {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 12px, transparent 12px 24px),
+    var(--navy, #0a0a0a);
+  color: var(--cream, #f1ece2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.map-consent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(245, 193, 61, 0.08) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: -1;
+}
+.map-consent-inner {
+  max-width: 36rem;
+  text-align: left;
+}
+.map-consent-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--yellow, #f5c13d);
+  margin-bottom: 1rem;
+}
+.map-consent-title {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+.map-consent-text {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(241, 236, 226, 0.78);
+  margin: 0 0 1.5rem;
+}
+.map-consent-text a {
+  color: var(--cream, #f1ece2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.map-consent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.map-consent-fallback {
+  font-size: 0.75rem;
+  color: rgba(241, 236, 226, 0.55);
+  margin: 0;
+}
+.map-consent-fallback a { color: rgba(241, 236, 226, 0.8); text-decoration: underline; }
 .map-caption {
   font-family: var(--mono);
   font-size: 0.65rem;
@@ -220,3 +288,158 @@
   .candidature-contact { padding: 5rem 1.25rem; }
   .candidature-quick { padding: 1.75rem; }
 }
+
+/* ===== Dépôt de candidature (encart Cloud-Campus style) ===== */
+.candidature-deposit {
+  background: var(--cream);
+  padding: 6rem 2rem 0;
+}
+.candidature-deposit-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.candidature-deposit-card {
+  background: linear-gradient(135deg, var(--navy) 0%, #14213d 100%);
+  color: var(--cream);
+  padding: 3.5rem 3rem;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -25px rgba(15, 24, 40, 0.45);
+}
+.candidature-deposit-card::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 60%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(245, 193, 61, 0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.candidature-deposit-head {
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.candidature-deposit-head .section-label { color: var(--yellow); }
+.candidature-deposit-head h2 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 280;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 1rem 0 1.2rem;
+  color: var(--cream);
+}
+.candidature-deposit-head h2 em { font-style: italic; color: var(--yellow); font-weight: 320; }
+.candidature-deposit-head p {
+  color: rgba(244, 239, 227, 0.75);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.deposit-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  position: relative;
+}
+.deposit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  background: rgba(244, 239, 227, 0.06);
+  border: 1px solid rgba(244, 239, 227, 0.12);
+  border-radius: 12px;
+  color: var(--cream);
+  text-decoration: none;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.deposit-btn:hover {
+  background: rgba(244, 239, 227, 0.1);
+  border-color: rgba(244, 239, 227, 0.25);
+  transform: translateY(-2px);
+}
+.deposit-btn--primary {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--navy);
+}
+.deposit-btn--primary:hover {
+  background: #fdd64d;
+  border-color: #fdd64d;
+  color: var(--navy);
+}
+.deposit-btn-label { display: flex; flex-direction: column; gap: 0.2rem; }
+.deposit-btn-title {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: 320;
+  letter-spacing: -0.01em;
+}
+.deposit-btn small {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 227, 0.6);
+}
+.deposit-btn--primary small { color: rgba(15, 24, 40, 0.7); }
+.deposit-btn-arrow {
+  font-size: 1.6rem;
+  transition: transform 0.25s;
+}
+.deposit-btn:hover .deposit-btn-arrow { transform: translateX(4px); }
+
+.deposit-tips {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  position: relative;
+}
+.deposit-tips li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(244, 239, 227, 0.1);
+  border-radius: 10px;
+  color: rgba(244, 239, 227, 0.78);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.deposit-tips li span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .candidature-deposit { padding: 4rem 1.25rem 0; }
+  .candidature-deposit-card { padding: 2.5rem 1.75rem; border-radius: 14px; }
+  .deposit-tips { grid-template-columns: 1fr; }
+}
+
+/* Mention RGPD sous les boutons de candidature */
+.deposit-rgpd {
+  margin-top: 1.5rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border-left: 3px solid var(--yellow, #ffd23f);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: inherit;
+  opacity: 0.92;
+}
+.deposit-rgpd strong { font-weight: 700; }
+.deposit-rgpd a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }

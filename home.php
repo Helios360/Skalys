@@ -1,11 +1,78 @@
 <?php
 require_once 'data/formations.php';
 
-$page_title  = 'Skalys — Business School / Compiègne / Bac à Bac+2';
-$page_desc   = 'École supérieure de commerce en alternance à Compiègne. CAP, BTS et Titre Pro. 100% gratuit, rémunéré, certifié Qualiopi. Une école qui forme à l\'IA, pas contre elle.';
+$page_title  = 'Skalys — Business School / Compiègne / Bac à Bac+5';
+$page_desc   = 'École en alternance à Compiègne : CAP, BTS, Bachelor, Mastère. 100% gratuit, rémunéré, certifié Qualiopi. Une école qui forme à l\'IA, pas contre.';
 $home_url    = '';
 $show_loader = true;
-$extra_css   = ['assets/css/home.css'];
+$extra_css   = ['/assets/css/home.css'];
+
+// FAQ visible sur la home — reproduite en JSON-LD pour les rich results
+$home_faq = [
+  ["Combien coûte une formation à Skalys ?", "Strictement zéro pour l'alternant. Toutes nos formations sont 100% gratuites et prises en charge par l'OPCO de l'entreprise qui vous accueille. Vous êtes même rémunéré pendant toute la durée de votre parcours."],
+  ["Quel est le rythme d'alternance ?", "Pour la majorité de nos formations : 3 jours en entreprise et 2 jours à l'école par semaine. Ce rythme permet d'appliquer chaque semaine les connaissances acquises et de monter en compétence rapidement."],
+  ["Comment trouver mon entreprise d'accueil ?", "Notre équipe vous accompagne à chaque étape : optimisation de votre CV, préparation aux entretiens, mise en relation directe avec nos 120+ entreprises partenaires locales. Vous n'êtes jamais seul."],
+  ["Quels sont les prérequis pour intégrer une formation ?", "La possession d'un bac est nécessaire pour intégrer nos formations. Au-delà des diplômes, c'est surtout votre motivation et votre projet professionnel qui comptent."],
+  ["Les diplômes Skalys sont-ils reconnus par l'État ?", "Oui, tous nos diplômes sont enregistrés au RNCP (Répertoire National des Certifications Professionnelles), du Niveau 4 (Bac) au Niveau 7 (Bac+5). Skalys Business School est également certifié Qualiopi."],
+];
+
+$jsonld_blocks = [
+  [
+    '@context'    => 'https://schema.org',
+    '@type'       => ['EducationalOrganization', 'LocalBusiness'],
+    '@id'         => 'https://skalys-bs.fr/#organization',
+    'name'        => 'Skalys Business School',
+    'alternateName' => 'Skalys',
+    'url'         => 'https://skalys-bs.fr/',
+    'logo'        => 'https://skalys-bs.fr/assets/images/skalys-logo.webp',
+    'image'       => 'https://skalys-bs.fr/assets/images/ecole.webp',
+    'description' => $page_desc,
+    'telephone'   => '+33652670444',
+    'email'       => 'contact@skalys-bs.fr',
+    'address'     => [
+      '@type'           => 'PostalAddress',
+      'streetAddress'   => '8 avenue Flandres Dunkerque',
+      'postalCode'      => '60200',
+      'addressLocality' => 'Compiègne',
+      'addressRegion'   => 'Hauts-de-France',
+      'addressCountry'  => 'FR',
+    ],
+    'geo' => [
+      '@type'     => 'GeoCoordinates',
+      'latitude'  => 49.4179,
+      'longitude' => 2.8260,
+    ],
+    'openingHoursSpecification' => [[
+      '@type'     => 'OpeningHoursSpecification',
+      'dayOfWeek' => ['Monday','Tuesday','Wednesday','Thursday','Friday'],
+      'opens'     => '09:00',
+      'closes'    => '18:00',
+    ]],
+    'sameAs' => [],
+    'parentOrganization' => [
+      '@type' => 'Organization',
+      'name'  => 'AJ-Formation SARL',
+    ],
+  ],
+  [
+    '@context' => 'https://schema.org',
+    '@type'    => 'WebSite',
+    '@id'      => 'https://skalys-bs.fr/#website',
+    'url'      => 'https://skalys-bs.fr/',
+    'name'     => 'Skalys Business School',
+    'inLanguage' => 'fr-FR',
+    'publisher'  => ['@id' => 'https://skalys-bs.fr/#organization'],
+  ],
+  [
+    '@context'   => 'https://schema.org',
+    '@type'      => 'FAQPage',
+    'mainEntity' => array_map(fn($qa) => [
+      '@type' => 'Question',
+      'name'  => $qa[0],
+      'acceptedAnswer' => ['@type' => 'Answer', 'text' => $qa[1]],
+    ], $home_faq),
+  ],
+];
 
 require 'components/header.php';
 ?>
@@ -31,7 +98,7 @@ require 'components/header.php';
       <div class="hero-meta-line">
         <span>Volume 01 — Édition 2026</span>
         <span>Compiègne, France</span>
-        <span>Bac → Bac+2</span>
+        <span>Bac → Bac+5</span>
       </div>
       <h1>
         <span class="word-mask"><span class="word-inner">Apprendre</span></span>
@@ -40,16 +107,16 @@ require 'components/header.php';
         <span class="word-mask"><span class="word-inner">réussir</span></span>
         <span class="word-mask"><span class="word-inner em-italic"><span class="yellow-marker">concrètement.</span></span></span>
       </h1>
-      <p class="hero-sub">Une école d'alternance à Compiègne. CAP, BTS et Titre Pro. Aucun frais, une rémunération, et une obsession : que vous soyez opérationnels avant tout le monde.</p>
+      <p class="hero-sub">Une école d'alternance à Compiègne. CAP, BTS, Bachelor, Mastère. Aucun frais, une rémunération, et une obsession : que vous soyez opérationnels avant tout le monde.</p>
       <div class="hero-actions">
-        <a href="candidature.php" class="btn btn-primary">Devenir alternant <span class="arrow">→</span></a>
+        <a href="/candidature.php" class="btn btn-primary">Devenir alternant <span class="arrow">→</span></a>
         <a href="#formations" class="btn">Explorer les programmes</a>
       </div>
     </div>
 
     <div class="hero-side">
       <div class="caption">Fig. 01 — BTS NDRC, atelier IA &amp; prospection</div>
-      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80" alt="Étudiants en formation Skalys">
+      <img src="/assets/images/ecole.webp" alt="Étudiants en formation Skalys" width="1376" height="768" fetchpriority="high" decoding="async">
       <div class="yellow-tag">Promo 2026</div>
     </div>
   </div>
@@ -60,16 +127,12 @@ require 'components/header.php';
       <span class="lab">Formations<br>certifiantes</span>
     </div>
     <div class="hero-foot-item">
-      <span class="num">2</span>
-      <span class="lab">Niveaux,<br>du CAP au Bac+2</span>
+      <span class="num">4</span>
+      <span class="lab">Niveaux,<br>du Bac au Bac+5</span>
     </div>
     <div class="hero-foot-item">
       <span class="num">100%</span>
       <span class="lab">Frais pris en charge<br>par l'OPCO</span>
-    </div>
-    <div class="hero-foot-item">
-      <span class="num">87%</span>
-      <span class="lab">Taux d'insertion<br>professionnelle</span>
     </div>
   </div>
 </section>
@@ -78,7 +141,7 @@ require 'components/header.php';
 <div class="mega-marquee">
   <div class="mega-marquee-track">
     <span>
-      <em>Form</em>er <span class="star">✦</span> <em>Connecter</em> <span class="star">✦</span> <em>Trans­former</em> <span class="star">✦</span> <em>Réussir</em> <span class="star">✦</span> <em>Form</em>er <span class="star">✦</span> <em>Connecter</em> <span class="star">✦</span> <em>Trans­former</em> <span class="star">✦</span> <em>Réussir</em> <span class="star">✦</span>
+      <em>Former</em> <span class="star">✦</span> <em>Connecter</em> <span class="star">✦</span> <em>Transformer</em> <span class="star">✦</span> <em>Réussir</em> <span class="star">✦</span> <em>Former</em> <span class="star">✦</span> <em>Connecter</em> <span class="star">✦</span> <em>Transformer</em> <span class="star">✦</span> <em>Réussir</em> <span class="star">✦</span>
     </span>
   </div>
 </div>
@@ -102,9 +165,9 @@ require 'components/header.php';
     <div class="formations-header">
       <div class="reveal">
         <div class="section-label"><span class="num">03</span> Formations</div>
-        <h2 class="section-h2">Quatre <em>formations</em>, zéro <em>frais</em>.</h2>
+        <h2 class="section-h2"><?= count($formations) ?> <em>formations</em>, zéro <em>frais</em>.</h2>
       </div>
-      <p class="reveal">Du CAP au Bac+2, toutes nos formations sont enregistrées au RNCP et reconnues par l'État. Toutes, sans exception, sont gratuites pour vous.</p>
+      <p class="reveal">Du Bac au Bac+5, toutes nos formations sont enregistrées au RNCP et reconnues par l'État. Toutes, sans exception, sont gratuites pour vous.</p>
     </div>
 
     <div class="level-tabs">
@@ -142,16 +205,12 @@ require 'components/header.php';
       <span class="stat-lab">Formateurs<br>experts en activité</span>
     </div>
     <div class="stat-cell reveal">
-      <span class="stat-num">200<span class="pct">+</span></span>
+      <span class="stat-num">120<span class="pct">+</span></span>
       <span class="stat-lab">Entreprises<br>partenaires locales</span>
     </div>
     <div class="stat-cell reveal">
       <span class="stat-num">100<span class="pct">%</span></span>
       <span class="stat-lab">Suivi pédagogique<br>individuel</span>
-    </div>
-    <div class="stat-cell reveal">
-      <span class="stat-num">87<span class="pct">%</span></span>
-      <span class="stat-lab">Insertion<br>professionnelle</span>
     </div>
   </div>
 </section>
@@ -237,7 +296,7 @@ require 'components/header.php';
       <div class="why-item reveal">
         <span class="why-num">02</span>
         <h4>Accompagnement<br>de A à Z</h4>
-        <p>Coaching CV, préparation aux entretiens, mise en relation avec nos 200+ entreprises partenaires. Vous n'êtes jamais seul dans votre recherche d'alternance.</p>
+        <p>Coaching CV, préparation aux entretiens, mise en relation avec nos 120+ entreprises partenaires. Vous n'êtes jamais seul dans votre recherche d'alternance.</p>
       </div>
       <div class="why-item reveal">
         <span class="why-num">03</span>
@@ -247,7 +306,7 @@ require 'components/header.php';
       <div class="why-item reveal">
         <span class="why-num">04</span>
         <h4>Diplômes reconnus<br>par l'État</h4>
-        <p>Tous nos diplômes sont enregistrés au RNCP (Niveaux 4 et 5). Skalys est certifié Qualiopi pour les actions de formation et de formation par apprentissage.</p>
+        <p>Tous nos diplômes sont enregistrés au RNCP (Niveaux 4 à 7). Skalys est certifié Qualiopi pour les actions de formation et de formation par apprentissage.</p>
       </div>
     </div>
   </div>
@@ -266,6 +325,7 @@ require 'components/header.php';
         <div class="step-num">01</div>
         <h4>Candidature en ligne</h4>
         <p>Vous remplissez notre formulaire en 5 minutes — c'est tout.</p>
+        <a href="/candidature.php" class="step-cta">Je candidate <span class="arrow">→</span></a>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
@@ -303,46 +363,49 @@ require 'components/header.php';
       <div class="testimonial">
         <div class="testimonial-num">N° 01</div>
         <span class="quote-mark">"</span>
-        <p>J'ai signé un CDI dans l'entreprise qui m'a accueillie en BTS NDRC. Skalys m'a vraiment préparée au monde réel.</p>
+        <p>Une école humaine, à l'écoute, et qui s'investit vraiment pour ses alternants. L'équipe pédagogique est top, les formateurs maîtrisent leurs sujets et les retours en entreprise sont concrets.</p>
         <div class="testimonial-author">
-          <div class="author-img">L</div>
+          <div class="author-img">★</div>
           <div>
-            <strong>Léa, 22 ans</strong>
-            <small>BTS NDRC — Concentrix</small>
+            <strong>Avis Google ★★★★★</strong>
+            <small>Étudiant — Skalys Business School</small>
           </div>
         </div>
       </div>
       <div class="testimonial">
         <div class="testimonial-num">N° 02</div>
         <span class="quote-mark">"</span>
-        <p>L'équipe nous met directement en contact avec des recruteurs locaux. C'est ce qui change tout.</p>
+        <p>Excellent accompagnement dans la recherche d'entreprise, mise en relation rapide avec des partenaires locaux. Skalys ne vous laisse jamais seul, et ça change tout dans le parcours.</p>
         <div class="testimonial-author">
-          <div class="author-img">A</div>
+          <div class="author-img">★</div>
           <div>
-            <strong>Adam, 20 ans</strong>
-            <small>BTS GPME — 2ème année</small>
+            <strong>Avis Google ★★★★★</strong>
+            <small>Alternant — BTS</small>
           </div>
         </div>
       </div>
       <div class="testimonial">
         <div class="testimonial-num">N° 03</div>
         <span class="quote-mark">"</span>
-        <p>Quatre alternants Skalys recrutés cette année. La qualité du suivi et la motivation des étudiants font la différence.</p>
+        <p>Cadre de formation moderne et bienveillant. On y apprend des choses utiles, directement applicables. Je recommande vivement Skalys pour qui veut une alternance vraiment professionnalisante.</p>
         <div class="testimonial-author">
-          <div class="author-img">N</div>
+          <div class="author-img">★</div>
           <div>
-            <strong>Norauto Compiègne</strong>
-            <small>Entreprise partenaire</small>
+            <strong>Avis Google ★★★★★</strong>
+            <small>Apprenant — Compiègne</small>
           </div>
         </div>
       </div>
+    </div>
+    <div class="testimonials-cta reveal">
+      <a href="https://www.google.com/search?q=skalys" target="_blank" rel="noopener" class="btn">Voir tous les avis Google <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
 <!-- ===== PARTNERS ===== -->
 <section class="partners-section">
-  <div class="partners-title">Plus de 200 entreprises partenaires</div>
+  <div class="partners-title">Plus de 120 entreprises partenaires</div>
   <div class="partners-marquee">
     <div class="partners-track">
       <span>
@@ -408,15 +471,15 @@ require 'components/header.php';
       </div>
       <div class="faq-item">
         <button class="faq-question">Comment trouver mon entreprise d'accueil ? <span class="faq-toggle">+</span></button>
-        <div class="faq-answer"><p>Notre équipe vous accompagne à chaque étape : optimisation de votre CV, préparation aux entretiens, mise en relation directe avec nos 200+ entreprises partenaires locales. Vous n'êtes jamais seul.</p></div>
+        <div class="faq-answer"><p>Notre équipe vous accompagne à chaque étape : optimisation de votre CV, préparation aux entretiens, mise en relation directe avec nos 120+ entreprises partenaires locales. Vous n'êtes jamais seul.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question">Quels sont les prérequis pour intégrer une formation ? <span class="faq-toggle">+</span></button>
-        <div class="faq-answer"><p>Cela dépend du diplôme : un niveau 3ème pour le CAP AEPE, un Bac pour le BTS ou le Titre Pro NTC. Au-delà des diplômes, c'est surtout votre motivation et votre projet professionnel qui comptent.</p></div>
+        <div class="faq-answer"><p>La possession d'un bac est nécessaire pour intégrer nos formations. Au-delà des diplômes, c'est surtout votre motivation et votre projet professionnel qui comptent.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question">Les diplômes Skalys sont-ils reconnus par l'État ? <span class="faq-toggle">+</span></button>
-        <div class="faq-answer"><p>Oui, tous nos diplômes sont enregistrés au RNCP (Répertoire National des Certifications Professionnelles), du Niveau 4 (CAP) au Niveau 5 (BTS / Titre Pro). Skalys Business School est également certifié Qualiopi.</p></div>
+        <div class="faq-answer"><p>Oui, tous nos diplômes sont enregistrés au RNCP (Répertoire National des Certifications Professionnelles), du Niveau 4 (Bac) au Niveau 7 (Bac+5). Skalys Business School est également certifié Qualiopi.</p></div>
       </div>
     </div>
   </div>

@@ -2,9 +2,9 @@
 require_once 'data/formations.php';
 
 $page_title       = 'Recruter un alternant — Skalys Business School';
-$page_desc        = 'Accueillez un alternant Skalys en alternance à Compiègne. 0€ de frais de formation, aides à l\'embauche, accompagnement complet. Commerce, gestion, petite enfance.';
-$home_url         = 'home.php';
-$extra_css        = ['assets/css/recruter.css'];
+$page_desc        = 'Accueillez un alternant Skalys à Compiègne : 0€ de frais, aides à l\'embauche, suivi complet. Commerce, gestion, RH, management, petite enfance.';
+$home_url         = '/';
+$extra_css        = ['/assets/css/recruter.css'];
 $sticky_cta_url   = '#contact';
 $sticky_cta_label = 'Recruter un alternant';
 
@@ -16,8 +16,8 @@ require 'components/header.php';
   <div class="recruter-hero-inner">
 
     <div>
-      <div class="section-label" style="color:rgba(244,239,227,0.55);">
-        <span class="num" style="color:var(--yellow);">→</span> Entreprises
+      <div class="section-label section-label--on-dark">
+        <span class="num">→</span> Entreprises
       </div>
       <h1>Recrutez votre prochain<br><em>talent en alternance.</em></h1>
       <p class="recruter-hero-sub">Des profils formés à l'IA, orientés terrain, opérationnels dès le premier jour. Zéro frais de formation. Accompagnement complet de A à Z.</p>
@@ -35,15 +35,15 @@ require 'components/header.php';
             <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a>
             <small>Réponse sous 48h</small>
           </div>
-          <div class="recruter-quick-item" style="margin-top:1.2rem;">
+          <div class="recruter-quick-item quick-item--spaced">
             <a href="tel:0652670444">06 52 67 04 44</a>
             <small>Lun – Ven, 9h – 18h</small>
           </div>
         </div>
-        <div style="padding-top:1.75rem;border-top:1px solid rgba(244,239,227,0.12);">
+        <div class="recruter-quick-cert">
           <div class="recruter-quick-label">Certifié</div>
           <div class="recruter-quick-item">
-            <span style="font-family:var(--display);font-style:italic;font-size:1.2rem;font-weight:350;color:var(--yellow);">Qualiopi</span>
+            <span class="recruter-quick-cert-name">Qualiopi</span>
             <small>Formation &amp; Apprentissage</small>
           </div>
         </div>
@@ -54,7 +54,7 @@ require 'components/header.php';
 
   <div class="recruter-hero-foot">
     <div class="recruter-hero-foot-item">
-      <span class="num"><em>200</em>+</span>
+      <span class="num"><em>120</em>+</span>
       <span class="lab">Entreprises<br>partenaires</span>
     </div>
     <div class="recruter-hero-foot-item">
@@ -64,10 +64,6 @@ require 'components/header.php';
     <div class="recruter-hero-foot-item">
       <span class="num">48h</span>
       <span class="lab">Délai de réponse<br>maximum</span>
-    </div>
-    <div class="recruter-hero-foot-item">
-      <span class="num">87%</span>
-      <span class="lab">Taux d'insertion<br>professionnelle</span>
     </div>
   </div>
 </section>
@@ -127,9 +123,9 @@ require 'components/header.php';
     <div class="recruter-section-header">
       <div class="reveal">
         <div class="section-label"><span class="num">02</span> Profils disponibles</div>
-        <h2 class="section-h2">Quatre profils,<br><em>un seul appel.</em></h2>
+        <h2 class="section-h2"><?= count($formations) ?> profils,<br><em>un seul appel.</em></h2>
       </div>
-      <p class="reveal">Du CAP au Bac+2, nous formons des alternants aux métiers du commerce, de la gestion et de la petite enfance. Tous formés à l'IA. Tous prêts à contribuer.</p>
+      <p class="reveal">Du Bac au Bac+5, nous formons des alternants aux métiers du commerce, de la gestion, des RH et de la petite enfance. Tous formés à l'IA. Tous prêts à contribuer.</p>
     </div>
 
     <div class="profils-grid stagger">
@@ -147,7 +143,7 @@ require 'components/header.php';
           <span>Domicile</span>
           <span>Halte-garderie</span>
         </div>
-        <a href="formation.php?slug=cap-aepe" class="profil-link">Voir la formation <span>→</span></a>
+        <a href="/formation/cap-aepe" class="profil-link">Voir la formation <span>→</span></a>
       </div>
 
       <div class="profil-card">
@@ -163,7 +159,7 @@ require 'components/header.php';
           <span>Digital</span>
           <span>IA</span>
         </div>
-        <a href="formation.php?slug=bts-ndrc" class="profil-link">Voir la formation <span>→</span></a>
+        <a href="/formation/bts-ndrc" class="profil-link">Voir la formation <span>→</span></a>
       </div>
 
       <div class="profil-card">
@@ -179,7 +175,7 @@ require 'components/header.php';
           <span>RH</span>
           <span>PME</span>
         </div>
-        <a href="formation.php?slug=bts-gpme" class="profil-link">Voir la formation <span>→</span></a>
+        <a href="/formation/bts-gpme" class="profil-link">Voir la formation <span>→</span></a>
       </div>
 
       <div class="profil-card">
@@ -195,7 +191,119 @@ require 'components/header.php';
           <span>Technique</span>
           <span>Prospection</span>
         </div>
-        <a href="formation.php?slug=tp-ntc" class="profil-link">Voir la formation <span>→</span></a>
+        <a href="/formation/tp-ntc" class="profil-link">Voir la formation <span>→</span></a>
+      </div>
+
+      <div class="profil-card">
+        <div class="profil-header">
+          <span class="profil-badge">BTS MCO</span>
+          <span class="profil-niveau">Niveau 5 — 2 ans</span>
+        </div>
+        <h3>Management Commercial<br>Opérationnel</h3>
+        <p>Animation point de vente, dynamisation de l'offre, pilotage des KPI, management d'équipe junior. Le profil terrain pour faire tourner un magasin, une enseigne ou une unité commerciale.</p>
+        <div class="profil-tags">
+          <span>Retail</span>
+          <span>Management</span>
+          <span>Animation</span>
+          <span>KPI</span>
+        </div>
+        <a href="/formation/bts-mco" class="profil-link">Voir la formation <span>→</span></a>
+      </div>
+
+      <div class="profil-card">
+        <div class="profil-header">
+          <span class="profil-badge">Bachelor RDC</span>
+          <span class="profil-niveau">Niveau 6 — 1 an</span>
+        </div>
+        <h3>Responsable<br>Développement Commercial</h3>
+        <p>Stratégie d'acquisition, comptes clés, pilotage par la data. Un profil senior commercial, capable de structurer votre développement et de monter en autonomie sur les comptes stratégiques.</p>
+        <div class="profil-tags">
+          <span>Business Dev</span>
+          <span>Grands comptes</span>
+          <span>Stratégie</span>
+          <span>Data</span>
+        </div>
+        <a href="/formation/bachelor-rdc" class="profil-link">Voir la formation <span>→</span></a>
+      </div>
+
+      <div class="profil-card">
+        <div class="profil-header">
+          <span class="profil-badge">Bachelor RH</span>
+          <span class="profil-niveau">Niveau 6 — 1 an</span>
+        </div>
+        <h3>Ressources<br>Humaines</h3>
+        <p>Recrutement, GPEC, paie, formation, droit social. Un appui RH polyvalent et autonome, formé aux outils IA de sourcing et d'onboarding pour augmenter la performance de la fonction.</p>
+        <div class="profil-tags">
+          <span>RH</span>
+          <span>Recrutement</span>
+          <span>Formation</span>
+          <span>Paie</span>
+        </div>
+        <a href="/formation/bachelor-rh" class="profil-link">Voir la formation <span>→</span></a>
+      </div>
+
+      <div class="profil-card">
+        <div class="profil-header">
+          <span class="profil-badge">Bachelor MGE</span>
+          <span class="profil-niveau">Niveau 6 — 1 an</span>
+        </div>
+        <h3>Manager en<br>Gestion d'Entreprise</h3>
+        <p>Pilotage financier, contrôle de gestion, organisation interne. Le bras droit du dirigeant, capable de produire des tableaux de bord et de piloter la performance opérationnelle.</p>
+        <div class="profil-tags">
+          <span>Gestion</span>
+          <span>Finance</span>
+          <span>Contrôle</span>
+          <span>Stratégie</span>
+        </div>
+        <a href="/formation/bachelor-mge" class="profil-link">Voir la formation <span>→</span></a>
+      </div>
+
+      <div class="profil-card">
+        <div class="profil-header">
+          <span class="profil-badge">Mastère MCBD</span>
+          <span class="profil-niveau">Niveau 7 — 2 ans</span>
+        </div>
+        <h3>Manager Commercial &amp;<br>Business Development</h3>
+        <p>Stratégie commerciale globale, ouverture de nouveaux marchés, management commercial. Un cadre commercial expérimenté en formation pour piloter la croissance de votre activité.</p>
+        <div class="profil-tags">
+          <span>Direction commerciale</span>
+          <span>BizDev</span>
+          <span>Stratégie</span>
+          <span>Management</span>
+        </div>
+        <a href="/formation/mastere-mcbd" class="profil-link">Voir la formation <span>→</span></a>
+      </div>
+
+      <div class="profil-card">
+        <div class="profil-header">
+          <span class="profil-badge">Mastère MSRH</span>
+          <span class="profil-niveau">Niveau 7 — 2 ans</span>
+        </div>
+        <h3>Manager Stratégie<br>RH</h3>
+        <p>Politique RH, transformation, marque employeur, dialogue social. Un profil RH stratégique, capable de structurer la fonction RH et d'accompagner les transformations de votre organisation.</p>
+        <div class="profil-tags">
+          <span>Stratégie RH</span>
+          <span>Transformation</span>
+          <span>Marque employeur</span>
+          <span>SIRH</span>
+        </div>
+        <a href="/formation/mastere-msrh" class="profil-link">Voir la formation <span>→</span></a>
+      </div>
+
+      <div class="profil-card">
+        <div class="profil-header">
+          <span class="profil-badge">Mastère ME</span>
+          <span class="profil-niveau">Niveau 7 — 2 ans</span>
+        </div>
+        <h3>Manager<br>d'Entreprise</h3>
+        <p>Direction générale, stratégie, gouvernance, transformation. Un futur manager généraliste formé à piloter une organisation dans toutes ses dimensions — finance, RH, commerce, innovation.</p>
+        <div class="profil-tags">
+          <span>Direction</span>
+          <span>Gouvernance</span>
+          <span>Stratégie</span>
+          <span>Transformation</span>
+        </div>
+        <a href="/formation/mastere-me" class="profil-link">Voir la formation <span>→</span></a>
       </div>
 
     </div>
@@ -237,8 +345,8 @@ require 'components/header.php';
 <!-- ===== TÉMOIGNAGE ===== -->
 <section class="recruter-testimonial">
   <div class="container">
-    <div class="section-label reveal" style="color:rgba(244,239,227,0.55);">
-      <span class="num" style="color:var(--yellow);">→</span> Ils nous font confiance
+    <div class="section-label section-label--on-dark reveal">
+      <span class="num">→</span> Ils nous font confiance
     </div>
     <div class="testimonial-big reveal">
       <span class="quote-mark-big">"</span>
@@ -291,7 +399,7 @@ require 'components/header.php';
       </div>
       <div class="faq-item">
         <button class="faq-question">Quels profils puis-je recruter ? <span class="faq-toggle">+</span></button>
-        <div class="faq-answer"><p>Skalys forme des alternants sur quatre filières : le CAP AEPE (petite enfance, niveau Bac), le BTS NDRC (relation client et digital, Bac+2), le BTS GPME (gestion de PME, Bac+2) et le Titre Pro NTC (négociation technico-commerciale, Bac+2). Contactez-nous pour identifier le profil le plus adapté à vos besoins.</p></div>
+        <div class="faq-answer"><p>Skalys forme des alternants sur l'ensemble du parcours Bac → Bac+5 : <strong>CAP AEPE</strong> (petite enfance), <strong>BTS NDRC</strong> (relation client & digital), <strong>BTS GPME</strong> (gestion de PME), <strong>BTS MCO</strong> (management commercial opérationnel), <strong>Titre Pro NTC</strong> (négociation technico-commerciale), <strong>Bachelor RDC</strong> (responsable développement commercial), <strong>Bachelor RH</strong>, <strong>Bachelor MGE</strong> (gestion d'entreprise), <strong>Mastère MCBD</strong> (manager commercial & business development), <strong>Mastère MSRH</strong> (manager stratégie RH) et <strong>Mastère ME</strong> (manager d'entreprise). Contactez-nous pour identifier le profil le plus adapté à vos besoins.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question">Y a-t-il des aides à l'embauche ? <span class="faq-toggle">+</span></button>
@@ -299,7 +407,7 @@ require 'components/header.php';
       </div>
       <div class="faq-item">
         <button class="faq-question">Quel est le rythme de présence de l'alternant en entreprise ? <span class="faq-toggle">+</span></button>
-        <div class="faq-answer"><p>Pour nos BTS et Titre Pro, le rythme est de 3 jours en entreprise et 2 jours à l'école, chaque semaine. Pour le CAP AEPE, le rythme est adapté au calendrier spécifique de la formation. Ce rythme soutenu est ce qui rend nos alternants si rapidement opérationnels.</p></div>
+        <div class="faq-answer"><p>Pour la majorité de nos formations, le rythme est de 3 jours en entreprise et 2 jours à l'école, chaque semaine. Ce rythme soutenu est ce qui rend nos alternants si rapidement opérationnels.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question">Comment se passe le suivi de l'alternant ? <span class="faq-toggle">+</span></button>
@@ -317,8 +425,8 @@ require 'components/header.php';
 <section class="recruter-contact" id="contact">
   <div class="recruter-contact-inner">
     <div class="recruter-contact-left">
-      <div class="section-label reveal" style="color:rgba(244,239,227,0.55);">
-        <span class="num" style="color:var(--yellow);">→</span> Nous contacter
+      <div class="section-label section-label--on-dark reveal">
+        <span class="num">→</span> Nous contacter
       </div>
       <h2 class="reveal">Prêt à accueillir<br><em>votre alternant ?</em></h2>
       <p class="reveal">Un message, un appel — notre équipe vous répond sous 48h et vous accompagne de la sélection à la signature du contrat.</p>

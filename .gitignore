@@ -1,0 +1,16 @@
+# Cache local — régénéré à l'exécution
+data/rss-cache.json
+
+# Système
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.idea/
+.vscode/
+*.swp
+*~
+
+# Logs PHP / serveur
+*.log
+error_log

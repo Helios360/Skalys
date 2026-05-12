@@ -2,10 +2,10 @@
 require_once 'data/formations.php';
 
 $page_title  = 'IA & Futur du Travail — Skalys Business School';
-$page_desc   = 'L\'IA transforme chaque métier. Skalys vous forme avant tout le monde — maîtrisez les outils qui feront la différence sur le marché du travail de demain.';
-$home_url    = 'home.php';
-$extra_css   = ['assets/css/ia.css'];
-$page_js     = 'assets/js/ia.js';
+$page_desc   = 'L\'IA transforme chaque métier. Skalys vous forme avant tout le monde — maîtrisez les outils qui feront la différence sur le marché de demain.';
+$home_url    = '/';
+$extra_css   = ['/assets/css/ia.css'];
+$page_js     = '/assets/js/ia.js';
 
 require 'components/header.php';
 ?>
@@ -43,7 +43,7 @@ require 'components/header.php';
     <p class="ia-hero-sub">D'ici 2030, des dizaines de millions de postes seront transformés par l'IA. Ce n'est pas une menace pour ceux qui se forment — c'est une opportunité sans précédent. Skalys vous prépare à en faire partie.</p>
 
     <div class="ia-hero-actions">
-      <a href="candidature.php" class="btn btn-yellow">Me former à l'IA <span class="arrow">→</span></a>
+      <a href="/candidature.php" class="btn btn-yellow">Me former à l'IA <span class="arrow">→</span></a>
       <a href="#horizon" class="btn ia-btn-ghost">Voir l'horizon <span class="arrow">↓</span></a>
     </div>
   </div>
@@ -93,28 +93,28 @@ require 'components/header.php';
       <div class="ia-urgence-card">
         <div class="ia-urgence-accent"></div>
         <span class="ia-urgence-num">44<em>%</em></span>
-        <h4>Des compétences devront évoluer d'ici 2027</h4>
+        <h3>Des compétences devront évoluer d'ici 2027</h3>
         <p>Selon le World Economic Forum, près de la moitié des travailleurs devront se requalifier dans les cinq prochaines années. L'IA est au cœur de cette transformation.</p>
       </div>
 
       <div class="ia-urgence-card">
         <div class="ia-urgence-accent"></div>
         <span class="ia-urgence-num">10<em>×</em></span>
-        <h4>Plus productive — une équipe formée à l'IA</h4>
+        <h3>Plus productive — une équipe formée à l'IA</h3>
         <p>Les études montrent que les équipes qui maîtrisent les outils IA produisent jusqu'à dix fois plus en temps comparable. Rédaction, analyse, prospection, création : tout va plus vite.</p>
       </div>
 
       <div class="ia-urgence-card">
         <div class="ia-urgence-accent"></div>
         <span class="ia-urgence-num">+35<em>%</em></span>
-        <h4>De salaire pour les profils maîtrisant l'IA</h4>
+        <h3>De salaire pour les profils maîtrisant l'IA</h3>
         <p>À poste équivalent, les candidats capables de travailler avec des outils IA négocient en moyenne 30 à 40% de mieux. Une compétence qui se monnaie dès la sortie d'école.</p>
       </div>
 
       <div class="ia-urgence-card">
         <div class="ia-urgence-accent"></div>
         <span class="ia-urgence-num">2<em>ans</em></span>
-        <h4>La fenêtre pour prendre de l'avance</h4>
+        <h3>La fenêtre pour prendre de l'avance</h3>
         <p>Les premières promotions formées à l'IA arrivent sur le marché. Ceux qui se forment maintenant seront les références dans leur domaine. Ceux qui attendent rattraperont.</p>
       </div>
 
@@ -138,7 +138,7 @@ require 'components/header.php';
       <div class="ia-horizon-card">
         <div class="ia-horizon-num">/01</div>
         <div class="ia-horizon-icon">◈</div>
-        <h4>Agents IA autonomes</h4>
+        <h3>Agents IA autonomes</h3>
         <p>Des logiciels qui agissent comme de vrais collaborateurs : prospectent, qualifient, relancent, rédigent et reportent sans intervention humaine. En 2026, certaines équipes travaillent déjà avec des "collègues" IA. En 2030, ce sera la norme.</p>
         <div class="ia-horizon-tag">Déjà en cours</div>
       </div>
@@ -146,7 +146,7 @@ require 'components/header.php';
       <div class="ia-horizon-card">
         <div class="ia-horizon-num">/02</div>
         <div class="ia-horizon-icon">◉</div>
-        <h4>Création à grande échelle</h4>
+        <h3>Création à grande échelle</h3>
         <p>Campagnes marketing, contenus vidéo, propositions commerciales, visuels de marque : ce qui prenait une semaine prend maintenant dix minutes. Le marketing de demain, c'est une personne avec la puissance de cent.</p>
         <div class="ia-horizon-tag">Déjà en cours</div>
       </div>
@@ -154,7 +154,7 @@ require 'components/header.php';
       <div class="ia-horizon-card">
         <div class="ia-horizon-num">/03</div>
         <div class="ia-horizon-icon">◎</div>
-        <h4>Décision prédictive</h4>
+        <h3>Décision prédictive</h3>
         <p>L'IA lit des milliers de signaux faibles pour anticiper les comportements clients, détecter les opportunités et prévenir les risques avant qu'ils n'apparaissent. La bonne décision, avant même que la question se pose.</p>
         <div class="ia-horizon-tag">Horizon 2027</div>
       </div>
@@ -162,7 +162,7 @@ require 'components/header.php';
       <div class="ia-horizon-card">
         <div class="ia-horizon-num">/04</div>
         <div class="ia-horizon-icon">◆</div>
-        <h4>Commerce 24h/24</h4>
+        <h3>Commerce 24h/24</h3>
         <p>Des assistants IA qui vendent, conseillent, qualifient et convertissent à toute heure, sans jamais se fatiguer. Votre meilleur commercial ne dort jamais, ne démissionne jamais, et s'améliore à chaque interaction.</p>
         <div class="ia-horizon-tag">Déjà en cours</div>
       </div>
@@ -170,7 +170,7 @@ require 'components/header.php';
       <div class="ia-horizon-card">
         <div class="ia-horizon-num">/05</div>
         <div class="ia-horizon-icon">◇</div>
-        <h4>RH régénérée</h4>
+        <h3>RH régénérée</h3>
         <p>Sourcing prédictif, évaluation objective, onboarding personnalisé, détection précoce des talents. L'IA libère la DRH des tâches répétitives pour la recentrer sur ce qui compte : les humains, leur développement, leur engagement.</p>
         <div class="ia-horizon-tag">Horizon 2027</div>
       </div>
@@ -178,7 +178,7 @@ require 'components/header.php';
       <div class="ia-horizon-card">
         <div class="ia-horizon-num">/06</div>
         <div class="ia-horizon-icon">○</div>
-        <h4>Automatisation totale</h4>
+        <h3>Automatisation totale</h3>
         <p>Devis, relances, rapports, plannings, conformité, comptabilité courante — les flux répétitifs s'automatisent. Les équipes se recentrent sur la création de valeur. La compétition, c'est ce qu'on fait avec ce temps retrouvé.</p>
         <div class="ia-horizon-tag">Horizon 2028</div>
       </div>
@@ -207,26 +207,26 @@ require 'components/header.php';
 
       <div class="ia-pilier reveal">
         <span class="ia-pilier-num">01</span>
-        <h4>Intégration transversale</h4>
-        <p>L'IA traverse chaque module, chaque semaine, chaque évaluation. Du BTS NDRC au TP NTC, nos étudiants utilisent des outils IA dans leurs missions réelles en entreprise — pas en salle de classe simulée.</p>
+        <h3>Intégration transversale</h3>
+        <p>L'IA traverse chaque module, chaque semaine, chaque évaluation. Au sein de toutes nos formations, nos étudiants utilisent des outils IA dans leurs missions réelles en entreprise — pas en salle de classe simulée.</p>
       </div>
 
       <div class="ia-pilier reveal">
         <span class="ia-pilier-num">02</span>
-        <h4>Formateurs qui la pratiquent</h4>
+        <h3>Formateurs qui la pratiquent</h3>
         <p>Nos formateurs n'enseignent pas l'IA depuis un manuel. Ils l'utilisent dans leur activité professionnelle quotidienne. Ce qu'ils transmettent, c'est ce qu'ils font — avec les mêmes outils, les mêmes cas, les mêmes erreurs à éviter.</p>
       </div>
 
       <div class="ia-pilier reveal">
         <span class="ia-pilier-num">03</span>
-        <h4>Ateliers live sur cas réels</h4>
+        <h3>Ateliers live sur cas réels</h3>
         <p>Chaque outil s'apprend en action : challenge de prospection IA, création de campagne from scratch, analyse de données réelles. L'évaluation, c'est le résultat obtenu — pas la récitation d'une définition.</p>
       </div>
 
       <div class="ia-pilier reveal">
         <span class="ia-pilier-num">04</span>
-        <h4>Entreprises qui l'exigent</h4>
-        <p>Nos 200+ entreprises partenaires nous le disent clairement : ils recrutent des profils qui savent utiliser l'IA. On forme exactement à ce qu'elles attendent. Les alternants qui sortent sont opérationnels le premier jour.</p>
+        <h3>Entreprises qui l'exigent</h3>
+        <p>Nos 120+ entreprises partenaires nous le disent clairement : ils recrutent des profils qui savent utiliser l'IA. On forme exactement à ce qu'elles attendent. Les alternants qui sortent sont opérationnels le premier jour.</p>
       </div>
 
     </div>
@@ -277,6 +277,83 @@ require 'components/header.php';
             <li>Ressources pédagogiques générées par IA</li>
             <li>Planification et organisation avec IA</li>
             <li>Veille sur les pratiques éducatives modernes</li>
+          </ul>
+        </div>
+
+        <div class="ia-formation-item">
+          <div class="ia-formation-badge">BTS MCO</div>
+          <h5>Management Commercial Opérationnel</h5>
+          <ul>
+            <li>Animation point de vente assistée par IA</li>
+            <li>Pilotage des KPI commerciaux avec Power BI</li>
+            <li>Plan d'action et reporting générés par IA</li>
+            <li>Optimisation merchandising via la data</li>
+          </ul>
+        </div>
+
+        <div class="ia-formation-item">
+          <div class="ia-formation-badge">Bachelor RDC</div>
+          <h5>Responsable de Développement Commercial</h5>
+          <ul>
+            <li>Stratégie de prospection augmentée par IA</li>
+            <li>Lead scoring &amp; CRM prédictif</li>
+            <li>Pitch deck commerciaux générés par IA</li>
+            <li>Pilotage du business par la data</li>
+          </ul>
+        </div>
+
+        <div class="ia-formation-item">
+          <div class="ia-formation-badge">Bachelor RH</div>
+          <h5>Ressources Humaines</h5>
+          <ul>
+            <li>Sourcing &amp; screening de CV par IA</li>
+            <li>Onboarding personnalisé automatisé</li>
+            <li>Rédaction de fiches de poste assistée</li>
+            <li>Analyse RH prédictive &amp; engagement</li>
+          </ul>
+        </div>
+
+        <div class="ia-formation-item">
+          <div class="ia-formation-badge">Bachelor MGE</div>
+          <h5>Manager en Gestion d'Entreprise</h5>
+          <ul>
+            <li>Tableaux de bord pilotage augmentés IA</li>
+            <li>Automatisation des process administratifs</li>
+            <li>Analyse financière &amp; prévisions IA</li>
+            <li>Aide à la décision stratégique data-driven</li>
+          </ul>
+        </div>
+
+        <div class="ia-formation-item">
+          <div class="ia-formation-badge">Mastère MCBD</div>
+          <h5>Manager Commercial &amp; Business Development</h5>
+          <ul>
+            <li>Stratégie commerciale pilotée par IA</li>
+            <li>Account Based Marketing &amp; data</li>
+            <li>Négociation BtoB augmentée</li>
+            <li>Pilotage de la performance commerciale</li>
+          </ul>
+        </div>
+
+        <div class="ia-formation-item">
+          <div class="ia-formation-badge">Mastère MSRH</div>
+          <h5>Manager Stratégie RH</h5>
+          <ul>
+            <li>Stratégie de talent management IA</li>
+            <li>People analytics &amp; prédictif</li>
+            <li>Transformation digitale de la fonction RH</li>
+            <li>Pilotage du dialogue social outillé IA</li>
+          </ul>
+        </div>
+
+        <div class="ia-formation-item">
+          <div class="ia-formation-badge">Mastère ME</div>
+          <h5>Manager d'Entreprise</h5>
+          <ul>
+            <li>Gouvernance &amp; pilotage data-driven</li>
+            <li>Transformation digitale de l'entreprise</li>
+            <li>Stratégie d'innovation augmentée IA</li>
+            <li>Prise de décision assistée par IA</li>
           </ul>
         </div>
 
@@ -381,7 +458,7 @@ require 'components/header.php';
     <h2 class="reveal">Skalys vous prépare<br><em>pour le monde de demain.</em></h2>
     <p class="reveal">Formations 100% gratuites. Rémunérées. En alternance. Avec une obsession : que vous soyez opérationnels avant tout le monde — IA incluse.</p>
     <div class="ia-cta-actions reveal">
-      <a href="candidature.php" class="btn btn-primary">Je candidate maintenant <span class="arrow">→</span></a>
+      <a href="/candidature.php" class="btn btn-primary">Je candidate maintenant <span class="arrow">→</span></a>
       <a href="home.php#formations" class="btn">Voir les formations</a>
     </div>
   </div>

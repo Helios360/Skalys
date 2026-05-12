@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     document.getElementById('loader')?.classList.add('done');
     document.body.classList.remove('loading');
     document.querySelector('.hero')?.classList.add('loaded');
-  }, 1900);
+  }, 1000);
 });
 
 // ===== Custom cursor =====
@@ -125,16 +125,7 @@ window.addEventListener('scroll', () => {
 
 // ===== Mobile menu =====
 document.querySelector('.menu-burger')?.addEventListener('click', () => {
-  const links = document.querySelector('.nav-links');
-  const open = links.style.display === 'flex';
-  links.style.display = open ? 'none' : 'flex';
-  if (!open) {
-    Object.assign(links.style, {
-      position: 'absolute', top: '100%', left: '0', right: '0',
-      flexDirection: 'column', background: 'var(--cream)',
-      padding: '1.5rem', gap: '0.5rem', borderBottom: '1px solid var(--border)'
-    });
-  }
+  document.querySelector('.nav-links')?.classList.toggle('mobile-open');
 });
 
 // ===== Dropdown formations (mobile toggle) =====
