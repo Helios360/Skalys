@@ -749,10 +749,10 @@
 
 /* ===== PARTNERS MARQUEE ===== */
 .partners-section {
-  background: var(--cream-light);
+  background: var(--navy);
   padding: 4rem 0 6rem;
   overflow: hidden;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(244, 239, 227, 0.1);
 }
 .partners-title {
   text-align: center;
@@ -760,7 +760,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-soft);
+  color: rgba(244, 239, 227, 0.5);
   margin-bottom: 3rem;
 }
 .partners-marquee {
@@ -775,8 +775,8 @@
   width: 80px;
   z-index: 2;
 }
-.partners-marquee::before { left: 0; background: linear-gradient(90deg, var(--cream-light), transparent); }
-.partners-marquee::after { right: 0; background: linear-gradient(-90deg, var(--cream-light), transparent); }
+.partners-marquee::before { left: 0; background: linear-gradient(90deg, var(--navy), transparent); }
+.partners-marquee::after { right: 0; background: linear-gradient(-90deg, var(--navy), transparent); }
 .partners-track {
   display: inline-flex;
   gap: 5rem;
@@ -789,8 +789,8 @@
   font-style: italic;
   font-weight: 350;
   font-size: 2rem;
-  color: var(--navy);
-  opacity: 0.4;
+  color: var(--cream);
+  opacity: 0.55;
   letter-spacing: -0.02em;
   transition: opacity 0.3s;
   white-space: nowrap;

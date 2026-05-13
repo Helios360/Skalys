@@ -14,6 +14,8 @@ $home_faq = [
   ["Comment trouver mon entreprise d'accueil ?", "Notre équipe vous accompagne à chaque étape : optimisation de votre CV, préparation aux entretiens, mise en relation directe avec nos 120+ entreprises partenaires locales. Vous n'êtes jamais seul."],
   ["Quels sont les prérequis pour intégrer une formation ?", "La possession d'un bac est nécessaire pour intégrer nos formations. Au-delà des diplômes, c'est surtout votre motivation et votre projet professionnel qui comptent."],
   ["Les diplômes Skalys sont-ils reconnus par l'État ?", "Oui, tous nos diplômes sont enregistrés au RNCP (Répertoire National des Certifications Professionnelles), du Niveau 4 (Bac) au Niveau 7 (Bac+5). Skalys Business School est également certifié Qualiopi."],
+  ["Les cours se déroulent-ils en présentiel ou à distance ?", "Toutes nos formations se déroulent en présentiel à Compiègne (Oise), dans nos locaux. Les cours ont lieu en face-à-face avec nos formateurs."],
+  ["Les cours sont-ils enregistrés ?", "Les sessions de cours ne sont pas enregistrées, toutefois le contenu pédagogique est disponible afin de rattraper le cours."],
 ];
 
 $jsonld_blocks = [
@@ -480,6 +482,14 @@ require 'components/header.php';
       <div class="faq-item">
         <button class="faq-question">Les diplômes Skalys sont-ils reconnus par l'État ? <span class="faq-toggle">+</span></button>
         <div class="faq-answer"><p>Oui, tous nos diplômes sont enregistrés au RNCP (Répertoire National des Certifications Professionnelles), du Niveau 4 (Bac) au Niveau 7 (Bac+5). Skalys Business School est également certifié Qualiopi.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Les cours se déroulent-ils en présentiel ou à distance ? <span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Toutes nos formations se déroulent en présentiel à Compiègne (Oise), dans nos locaux. Les cours ont lieu en face-à-face avec nos formateurs.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Les cours sont-ils enregistrés ? <span class="faq-toggle">+</span></button>
+        <div class="faq-answer"><p>Les sessions de cours ne sont pas enregistrées, toutefois le contenu pédagogique est disponible afin de rattraper le cours.</p></div>
       </div>
     </div>
   </div>

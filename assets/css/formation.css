@@ -591,6 +591,48 @@ details[open] .formation-bloc-arrow {
   color: var(--text);
   line-height: 1.55;
 }
+.formation-salaire {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+.formation-salaire-table-wrap {
+  overflow-x: auto;
+  margin-top: 0.8rem;
+}
+.formation-salaire-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.formation-salaire-table th {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+.formation-salaire-table td {
+  padding: 0.5rem 0.7rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.formation-salaire-table tbody tr:last-child td { border-bottom: none; }
+.formation-salaire-row--highlight td {
+  font-weight: 600;
+  color: var(--navy);
+  background: rgba(245, 193, 61, 0.08);
+}
+.formation-salaire-note {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  margin-top: 0.8rem;
+  line-height: 1.5;
+}
 
 /* ===== ÉVALUATIONS + PASSERELLES ===== */
 .formation-eval {

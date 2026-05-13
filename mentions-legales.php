@@ -47,59 +47,62 @@ require 'components/header.php';
       <p>Le site <strong>skalys-bs.fr</strong> est édité par&nbsp;:</p>
       <div class="legal-table">
         <div>Raison sociale</div>
-        <div><strong>AJ-Formation SARL</strong></div>
+        <div><strong>Cloud Campus SAS</strong></div>
 
         <div>Forme juridique</div>
-        <div>Société à responsabilité limitée (SARL)</div>
+        <div>Société par actions simplifiée (SAS)</div>
 
         <div>Capital social</div>
-        <div><span class="legal-todo">À compléter</span></div>
+        <div>2 000 €</div>
 
         <div>Siège social</div>
         <div>8 avenue Flandres Dunkerque, 60200 Compiègne, France</div>
 
         <div>SIRET</div>
-        <div><span class="legal-todo">À compléter</span></div>
+        <div>791 428 980 00035</div>
 
         <div>RCS</div>
-        <div><span class="legal-todo">À compléter</span> (Compiègne)</div>
+        <div>444 048 441 (Compiègne)</div>
 
         <div>N° TVA intracom.</div>
-        <div><span class="legal-todo">À compléter</span></div>
+        <div>Exonéré de TVA — Article 261-4-4° a du CGI</div>
 
         <div>N° déclaration d'activité</div>
-        <div><span class="legal-todo">À compléter</span> (auprès du Préfet de région Hauts-de-France)</div>
+        <div>32 60 04134 60 (auprès du Préfet de région Hauts-de-France)</div>
 
         <div>Certification</div>
-        <div>Qualiopi — Actions de formation et actions par apprentissage</div>
+        <div>Qualiopi — Actions de formation et actions de formation par apprentissage (arrêté du 12/03/2026)</div>
 
         <div>Téléphone</div>
         <div><a href="tel:0652670444">06 52 67 04 44</a></div>
 
         <div>Email</div>
-        <div><a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></div>
+        <div><a href="mailto:contact@cloud-campus.fr">contact@cloud-campus.fr</a></div>
       </div>
     </div>
 
     <div class="legal-section" id="directeur">
       <h2>2. Directeur de la publication</h2>
-      <p>Le directeur de la publication du site est <strong>Abdelkader Barakat</strong>, en qualité de directeur général de la société AJ-Formation SARL.</p>
+      <p>Le directeur de la publication du site est <strong>BARAKAT Abdelkader</strong>, en qualité de représentant légal de Cloud Campus SAS.</p>
     </div>
 
     <div class="legal-section" id="hebergeur">
       <h2>3. Hébergeur</h2>
       <div class="legal-table">
         <div>Hébergeur</div>
-        <div><strong>OVH SAS</strong></div>
+        <div><strong>OVH</strong></div>
 
         <div>Adresse</div>
-        <div>2 rue Kellermann, 59100 Roubaix, France</div>
+        <div>2 rue Kellermann — 59100 Roubaix — France</div>
 
         <div>Téléphone</div>
-        <div>+33 9 72 10 10 07</div>
+        <div>1007 (numéro gratuit depuis un poste fixe en France)</div>
 
-        <div>Site</div>
-        <div><a href="https://www.ovhcloud.com" target="_blank" rel="noopener">www.ovhcloud.com</a></div>
+        <div>Site web</div>
+        <div><a href="https://www.ovhcloud.com/fr/" target="_blank" rel="noopener">https://www.ovhcloud.com/fr/</a></div>
+
+        <div>Contact</div>
+        <div><a href="https://www.ovhcloud.com/fr/contact/" target="_blank" rel="noopener">https://www.ovhcloud.com/fr/contact/</a></div>
       </div>
     </div>
 

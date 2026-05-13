@@ -344,6 +344,35 @@ require 'components/header.php';
         </div>
         <?php endif; ?>
       </div>
+
+      <div class="formation-salaire">
+        <div class="financement-block-label">Salaire apprenti 2026</div>
+        <div class="formation-salaire-table-wrap">
+          <table class="formation-salaire-table">
+            <thead>
+              <tr>
+                <th>Tranche d'âge</th>
+                <th>Année</th>
+                <th>Base</th>
+                <th>Brut / mois</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Moins de 18 ans</td><td>1ère</td><td>27 % SMIC</td><td>492,22 €</td></tr>
+              <tr><td>Moins de 18 ans</td><td>2ème</td><td>39 % SMIC</td><td>710,98 €</td></tr>
+              <tr><td>Moins de 18 ans</td><td>3ème</td><td>55 % SMIC</td><td>1 002,67 €</td></tr>
+              <tr><td>18 à 20 ans</td><td>1ère</td><td>43 % SMIC</td><td>783,90 €</td></tr>
+              <tr><td>18 à 20 ans</td><td>2ème</td><td>51 % SMIC</td><td>929,75 €</td></tr>
+              <tr><td>18 à 20 ans</td><td>3ème</td><td>67 % SMIC</td><td>1 221,43 €</td></tr>
+              <tr><td>21 à 25 ans</td><td>1ère</td><td>53 % SMIC*</td><td>966,21 €</td></tr>
+              <tr><td>21 à 25 ans</td><td>2ème</td><td>61 % SMIC*</td><td>1 112,05 €</td></tr>
+              <tr><td>21 à 25 ans</td><td>3ème</td><td>78 % SMIC*</td><td>1 421,96 €</td></tr>
+              <tr class="formation-salaire-row--highlight"><td>26 ans et plus</td><td>—</td><td>100 % SMIC*</td><td>1 823,03 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="formation-salaire-note">* ou salaire minimum conventionnel correspondant à l'emploi occupé s'il est plus favorable</p>
+      </div>
     </div>
 
   </div>

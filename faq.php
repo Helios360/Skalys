@@ -24,6 +24,8 @@ $faq_all_items = [
   ["Puis-je poursuivre mes études après ?", "Oui. Après un CAP, vous pouvez poursuivre vers un Bac pro ou un autre parcours. Après un BTS / Titre Pro, vous pouvez viser un Bachelor ou un Mastère selon votre projet — Skalys propose des cursus jusqu'au Bac+5."],
   ["Où se situe l'école ?", "Skalys Business School est basée à Compiègne (Oise). L'adresse figure en bas de page dans la section Contact."],
   ["Comment vous contacter ?", "Vous pouvez nous écrire à contact@skalys-bs.fr ou nous appeler au 06 52 67 04 44."],
+  ["Les cours se déroulent-ils en présentiel ou à distance ?", "Toutes nos formations se déroulent en présentiel à Compiègne (Oise), dans nos locaux. Les cours ont lieu en face-à-face avec nos formateurs."],
+  ["Les cours sont-ils enregistrés ?", "Les sessions de cours ne sont pas enregistrées, toutefois le contenu pédagogique est disponible afin de rattraper le cours."],
 ];
 
 $jsonld_blocks = [
@@ -189,6 +191,14 @@ require 'components/header.php';
         <div class="faq-item">
           <button class="faq-question">Où se situe l'école ? <span class="faq-toggle">+</span></button>
           <div class="faq-answer"><p>Skalys Business School est basée à <strong>Compiègne</strong> (Oise). L'adresse figure en bas de page dans la section Contact.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Les cours se déroulent-ils en présentiel ou à distance ? <span class="faq-toggle">+</span></button>
+          <div class="faq-answer"><p>Toutes nos formations se déroulent en <strong>présentiel</strong> à Compiègne (Oise), dans nos locaux. Les cours ont lieu en face-à-face avec nos formateurs.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Les cours sont-ils enregistrés ? <span class="faq-toggle">+</span></button>
+          <div class="faq-answer"><p>Les sessions de cours ne sont pas enregistrées, toutefois le contenu pédagogique est disponible afin de rattraper le cours.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">Comment vous contacter ? <span class="faq-toggle">+</span></button>
