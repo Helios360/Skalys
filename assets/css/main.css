@@ -572,6 +572,11 @@ footer {
 
 .footer-map {
   margin-top: 1.3rem;
+  text-align: center;
+}
+.footer-map .footer-map-link {
+  margin-left: auto;
+  margin-right: auto;
 }
 .footer-map-link {
   position: relative;

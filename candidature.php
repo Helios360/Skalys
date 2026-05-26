@@ -30,7 +30,7 @@ require 'components/header.php';
             <small>Réponse sous 48h</small>
           </div>
           <div class="candidature-quick-item quick-item--spaced">
-            <a href="tel:0652670444">06 52 67 04 44</a>
+            <a href="tel:0670934298">06 70 93 42 98</a>
             <small>Lun – Ven, 9h – 18h</small>
           </div>
         </div>
@@ -66,10 +66,10 @@ require 'components/header.php';
           </span>
           <span class="deposit-btn-arrow">→</span>
         </a>
-        <a href="tel:0652670444" class="deposit-btn">
+        <a href="tel:0670934298" class="deposit-btn">
           <span class="deposit-btn-label">
             <span class="deposit-btn-title">M'appeler / être rappelé</span>
-            <small>06 52 67 04 44 — Lun-Ven 9h-18h</small>
+            <small>06 70 93 42 98 — Lun-Ven 9h-18h</small>
           </span>
           <span class="deposit-btn-arrow">→</span>
         </a>
@@ -161,7 +161,7 @@ require 'components/header.php';
       <div class="contact-block">
         <span class="contact-block-label">Téléphone</span>
         <span class="contact-block-value">
-          <a href="tel:0652670444">06 52 67 04 44</a>
+          <a href="tel:0670934298">06 70 93 42 98</a>
         </span>
         <span class="text-meta-small">
           Lun – Ven · 9h – 18h

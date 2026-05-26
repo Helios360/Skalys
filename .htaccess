@@ -19,29 +19,33 @@ AddDefaultCharset UTF-8
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # --- HTTPS obligatoire ---
+  # 1. Domaine .com → .fr (en premier pour éviter les hops)
+  RewriteCond %{HTTP_HOST} ^(www\.)?skalys-bs\.com$ [NC]
+  RewriteRule ^(.*)$ https://skalys-bs.fr/$1 [L,R=301]
+
+  # 2. HTTPS obligatoire
   RewriteCond %{HTTPS} off
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-  # --- www → sans www (décommenter si domaine sans www) ---
-  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  # RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+  # 3. www → sans www
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
-  # --- sans www → www (décommenter si domaine avec www) ---
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-  # --- Canonical: /home.php et /index.php → / (évite le duplicate content) ---
+  # 4. home.php / index.php → /
   RewriteCond %{THE_REQUEST} \s/+(?:home|index)\.php[\s?] [NC]
   RewriteRule ^ / [R=301,L]
 
-  # --- URLs propres pour les fiches formation : /formation/<slug> ---
+  # 5. Ancienne forme formation.php?slug=X → /formation/X
+  RewriteCond %{THE_REQUEST} \s/+formation\.php\?slug=([a-z0-9-]+)[\s&] [NC]
+  RewriteRule ^ /formation/%1? [R=301,L]
+
+  # 6. Rewrite interne propre
   RewriteRule ^formation/([a-z0-9-]+)/?$ formation.php?slug=$1 [L,QSA]
 
-  # --- Sitemap dynamique ---
+  # 7. Sitemap dynamique
   RewriteRule ^sitemap\.xml$ sitemap.xml.php [L]
 
-  # --- Bloquer l'accès direct aux dossiers internes ---
+  # 8. Blocage dossiers internes
   RewriteRule ^(components|data)(/|$) - [F,L]
 </IfModule>
 

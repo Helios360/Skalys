@@ -57,8 +57,6 @@ require 'components/header.php';
         <div>Email contact</div>
         <div><a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></div>
 
-        <div>DPO / Référent</div>
-        <div><span class="legal-todo">À compléter</span> (s'il est désigné)</div>
       </div>
     </div>
 
@@ -176,8 +174,7 @@ require 'components/header.php';
       <p>Pour toute question relative à cette politique ou au traitement de vos données&nbsp;:</p>
       <ul>
         <li>Email&nbsp;: <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></li>
-        <li>Téléphone&nbsp;: <a href="tel:0652670444">06 52 67 04 44</a></li>
-        <li>Courrier&nbsp;: AJ-Formation SARL — 8 avenue Flandres Dunkerque — 60200 Compiègne</li>
+        <li>Courrier&nbsp;: AJ-Formation — 8 avenue Flandres Dunkerque — 60200 Compiègne</li>
       </ul>
       <p>Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la <strong>Commission Nationale de l'Informatique et des Libertés (CNIL)</strong>&nbsp;: <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">www.cnil.fr/fr/plaintes</a>.</p>
     </div>

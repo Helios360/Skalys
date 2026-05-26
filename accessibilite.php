@@ -37,6 +37,7 @@ require 'components/header.php';
         <li><a href="#adaptations">Adaptations pédagogiques &amp; matérielles</a></li>
         <li><a href="#numerique">Accessibilité numérique</a></li>
         <li><a href="#partenaires">Nos partenaires</a></li>
+        <li><a href="#registre">Registre public d'accessibilité</a></li>
         <li><a href="#contact">Nous contacter</a></li>
       </ol>
     </div>
@@ -73,7 +74,7 @@ require 'components/header.php';
         <div><strong>Laetitia Toussaints</strong> — Responsable administrative &amp; pédagogique</div>
 
         <div>Email</div>
-        <div><a href="mailto:laetitia@cloud-campus.fr">laetitia@cloud-campus.fr</a></div>
+        <div><a href="mailto:laetitia@aj-formation.com">laetitia@aj-formation.com</a></div>
 
         <div>Téléphone</div>
         <div><a href="tel:0640814686">06 40 81 46 86</a></div>
@@ -135,12 +136,18 @@ require 'components/header.php';
       </ul>
     </div>
 
+    <div class="legal-section" id="registre">
+      <h2>7. Registre public d'accessibilité</h2>
+      <p>Conformément au décret n°&nbsp;2017-1327 du 9 septembre 2017, Skalys Business School tient un registre public d'accessibilité. La fiche de synthèse est téléchargeable ci-dessous.</p>
+      <p><a href="/assets/pdf/registre-accessibilite.pdf" target="_blank" rel="noopener" download>Télécharger la fiche de synthèse du registre public d'accessibilité (PDF)</a></p>
+    </div>
+
     <div class="legal-section" id="contact">
-      <h2>7. Nous contacter</h2>
+      <h2>8. Nous contacter</h2>
       <p>Pour toute question relative à l'accessibilité de nos formations ou pour engager une démarche personnalisée&nbsp;:</p>
       <ul>
-        <li>Référent handicap&nbsp;: <a href="mailto:laetitia@cloud-campus.fr">laetitia@cloud-campus.fr</a> — <a href="tel:0640814686">06 40 81 46 86</a></li>
-        <li>Accueil général&nbsp;: <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a> — <a href="tel:0652670444">06 52 67 04 44</a></li>
+        <li>Référent handicap&nbsp;: <a href="mailto:laetitia@aj-formation.com">laetitia@aj-formation.com</a></li>
+        <li>Accueil général&nbsp;: <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></li>
         <li>Adresse&nbsp;: AJ-Formation SARL — 8 avenue Flandres Dunkerque — 60200 Compiègne</li>
       </ul>
       <p>Tous nos locaux sont accessibles aux personnes à mobilité réduite (PMR).</p>

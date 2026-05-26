@@ -47,7 +47,7 @@ require 'components/header.php';
       <p>Le site <strong>skalys-bs.fr</strong> est édité par&nbsp;:</p>
       <div class="legal-table">
         <div>Raison sociale</div>
-        <div><strong>Cloud Campus SAS</strong></div>
+        <div><strong>AJ-Formation</strong></div>
 
         <div>Forme juridique</div>
         <div>Société par actions simplifiée (SAS)</div>
@@ -73,17 +73,14 @@ require 'components/header.php';
         <div>Certification</div>
         <div>Qualiopi — Actions de formation et actions de formation par apprentissage (arrêté du 12/03/2026)</div>
 
-        <div>Téléphone</div>
-        <div><a href="tel:0652670444">06 52 67 04 44</a></div>
-
         <div>Email</div>
-        <div><a href="mailto:contact@cloud-campus.fr">contact@cloud-campus.fr</a></div>
+        <div><a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></div>
       </div>
     </div>
 
     <div class="legal-section" id="directeur">
       <h2>2. Directeur de la publication</h2>
-      <p>Le directeur de la publication du site est <strong>BARAKAT Abdelkader</strong>, en qualité de représentant légal de Cloud Campus SAS.</p>
+      <p>Le directeur de la publication du site est <strong>BARAKAT Abdelkader</strong>, en qualité de représentant légal de AJ-Formation.</p>
     </div>
 
     <div class="legal-section" id="hebergeur">
@@ -140,8 +137,7 @@ require 'components/header.php';
       <p>Pour toute question relative au site, à son contenu ou aux présentes mentions légales, vous pouvez nous contacter&nbsp;:</p>
       <ul>
         <li>Par courriel&nbsp;: <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></li>
-        <li>Par téléphone&nbsp;: <a href="tel:0652670444">06 52 67 04 44</a></li>
-        <li>Par voie postale&nbsp;: AJ-Formation SARL — 8 avenue Flandres Dunkerque — 60200 Compiègne</li>
+        <li>Par voie postale&nbsp;: AJ-Formation — 8 avenue Flandres Dunkerque — 60200 Compiègne</li>
       </ul>
     </div>
 

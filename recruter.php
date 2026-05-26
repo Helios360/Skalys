@@ -36,7 +36,7 @@ require 'components/header.php';
             <small>Réponse sous 48h</small>
           </div>
           <div class="recruter-quick-item quick-item--spaced">
-            <a href="tel:0652670444">06 52 67 04 44</a>
+            <a href="tel:0670934298">06 70 93 42 98</a>
             <small>Lun – Ven, 9h – 18h</small>
           </div>
         </div>
@@ -445,7 +445,7 @@ require 'components/header.php';
       <div class="rcontact-block reveal">
         <span class="rcontact-label">Téléphone</span>
         <span class="rcontact-value">
-          <a href="tel:0652670444">06 52 67 04 44</a>
+          <a href="tel:0670934298">06 70 93 42 98</a>
         </span>
         <span class="rcontact-hours">Lun – Ven · 9h – 18h</span>
       </div>

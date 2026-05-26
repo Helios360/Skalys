@@ -23,7 +23,7 @@ $faq_all_items = [
   ["Les diplômes Skalys sont-ils reconnus par l'État ?", "Oui, tous nos diplômes sont enregistrés au RNCP (Répertoire National des Certifications Professionnelles), du Niveau 4 (Bac) au Niveau 7 (Bac+5). Skalys Business School est également certifié Qualiopi."],
   ["Puis-je poursuivre mes études après ?", "Oui. Après un CAP, vous pouvez poursuivre vers un Bac pro ou un autre parcours. Après un BTS / Titre Pro, vous pouvez viser un Bachelor ou un Mastère selon votre projet — Skalys propose des cursus jusqu'au Bac+5."],
   ["Où se situe l'école ?", "Skalys Business School est basée à Compiègne (Oise). L'adresse figure en bas de page dans la section Contact."],
-  ["Comment vous contacter ?", "Vous pouvez nous écrire à contact@skalys-bs.fr ou nous appeler au 06 52 67 04 44."],
+  ["Comment vous contacter ?", "Vous pouvez nous écrire à contact@skalys-bs.fr ou nous appeler au 06 70 93 42 98."],
   ["Les cours se déroulent-ils en présentiel ou à distance ?", "Toutes nos formations se déroulent en présentiel à Compiègne (Oise), dans nos locaux. Les cours ont lieu en face-à-face avec nos formateurs."],
   ["Les cours sont-ils enregistrés ?", "Les sessions de cours ne sont pas enregistrées, toutefois le contenu pédagogique est disponible afin de rattraper le cours."],
 ];
@@ -202,7 +202,7 @@ require 'components/header.php';
         </div>
         <div class="faq-item">
           <button class="faq-question">Comment vous contacter ? <span class="faq-toggle">+</span></button>
-          <div class="faq-answer"><p>Vous pouvez nous écrire à <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a> ou nous appeler au <a href="tel:0652670444">06 52 67 04 44</a>.</p></div>
+          <div class="faq-answer"><p>Vous pouvez nous écrire à <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a> ou nous appeler au <a href="tel:0670934298">06 70 93 42 98</a>.</p></div>
         </div>
       </div>
     </div>

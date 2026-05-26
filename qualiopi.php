@@ -47,23 +47,23 @@ require 'components/header.php';
         <div>8 avenue Flandres Dunkerque, 60200 Compiègne, France</div>
 
         <div>Numéro de certificat</div>
-        <div><span class="legal-todo">À compléter</span></div>
+        <div>2020/90151.4</div>
 
         <div>Date d'obtention</div>
-        <div><span class="legal-todo">À compléter</span></div>
+        <div>12/03/2026</div>
 
         <div>Date de validité</div>
-        <div><span class="legal-todo">À compléter</span></div>
+        <div>13/12/2027</div>
 
         <div>Organisme certificateur</div>
-        <div><span class="legal-todo">À compléter</span></div>
+        <div>AFNOR Certification</div>
       </div>
     </div>
 
     <div class="legal-section">
       <h2>Consulter le certificat</h2>
-      <p>Le certificat Qualiopi de Skalys Business School est disponible sur simple demande à <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a>. Une fois disponible, il sera également téléchargeable directement ci-dessous.</p>
-      <p><a href="#" class="legal-todo">Télécharger le certificat (PDF — à venir)</a></p>
+      <p>Le certificat Qualiopi de Skalys Business School (AJ-Formation) est téléchargeable ci-dessous.</p>
+      <p><a href="/assets/pdf/certificat-qualiopi.pdf" target="_blank" rel="noopener" download>Télécharger le certificat Qualiopi (PDF)</a></p>
     </div>
 
     <div class="legal-section">
@@ -81,7 +81,7 @@ require 'components/header.php';
 
     <div class="legal-section">
       <h2>Une question sur la certification&nbsp;?</h2>
-      <p>Vous pouvez nous contacter à <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a> ou au <a href="tel:0652670444">06 52 67 04 44</a>. Pour en savoir plus sur la marque Qualiopi, consultez le site du <a href="https://travail-emploi.gouv.fr/formation-professionnelle/qualite-de-la-formation/qualiopi-marque-de-certification-qualite-des-prestataires-de-formation/" target="_blank" rel="noopener">Ministère du Travail</a>.</p>
+      <p>Vous pouvez nous contacter à <a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a>. Pour en savoir plus sur la marque Qualiopi, consultez le site du <a href="https://travail-emploi.gouv.fr/formation-professionnelle/qualite-de-la-formation/qualiopi-marque-de-certification-qualite-des-prestataires-de-formation/" target="_blank" rel="noopener">Ministère du Travail</a>.</p>
     </div>
 
   </div>

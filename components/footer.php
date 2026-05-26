@@ -80,18 +80,17 @@ $social_target = fn(string $href) => $href === '#' ? '' : ' target="_blank"';
       <ul>
         <li>8 av. Flandres Dunkerque<br>60200 Compiègne</li>
         <li><a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></li>
-        <li><a href="tel:0652670444">06 52 67 04 44</a></li>
       </ul>
       <div class="footer-map" data-consent-map>
         <!-- Bloc affiché tant que l'utilisateur n'a pas accepté les cookies « cartes ». RGPD : pas de requête tiers (OpenStreetMap) sans consentement préalable. -->
         <div class="footer-map-consent" data-consent-placeholder>
-          <span class="footer-map-pin" aria-hidden="true">📍</span>
           <p class="footer-map-consent-text">La carte est fournie par OpenStreetMap. Pour l'afficher, votre adresse IP est transmise à un service tiers.</p>
           <button type="button" class="footer-map-consent-btn" data-consent-accept>Afficher la carte</button>
           <a href="https://maps.google.com/?q=8+avenue+Flandres+Dunkerque+60200+Compiègne" target="_blank" rel="noopener noreferrer" class="footer-map-consent-link">Ouvrir dans Google Maps →</a>
         </div>
         <a href="https://maps.google.com/?q=8+avenue+Flandres+Dunkerque+60200+Compiègne" target="_blank" rel="noopener noreferrer" class="footer-map-link" aria-label="Voir Skalys sur Google Maps" data-consent-frame hidden>
           <img
+            src="/assets/images/image.png"
             data-consent-src="https://staticmap.openstreetmap.de/staticmap.php?center=49.4179,2.8260&zoom=15&size=400x200&markers=49.4179,2.8260,red-pushpin"
             alt="Carte — Skalys Business School à Compiègne"
             width="400"
@@ -100,7 +99,6 @@ $social_target = fn(string $href) => $href === '#' ? '' : ' target="_blank"';
             decoding="async"
             onerror="this.style.display='none'; this.parentElement.classList.add('footer-map-fallback');"
           >
-          <span class="footer-map-pin" aria-hidden="true">📍</span>
           <span class="footer-map-cta">Voir sur la carte <span>→</span></span>
         </a>
       </div>
