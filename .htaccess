@@ -19,17 +19,11 @@ AddDefaultCharset UTF-8
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 1. Domaine .com → .fr (en premier pour éviter les hops)
-  RewriteCond %{HTTP_HOST} ^(www\.)?skalys-bs\.com$ [NC]
-  RewriteRule ^(.*)$ https://skalys-bs.fr/$1 [L,R=301]
-
-  # 2. HTTPS obligatoire
+  # Force https + host canonique en UN seul hop, pour tout host non-canonique
+  # (couvre .com, www, ET le hostname technique OVH)
+  RewriteCond %{HTTP_HOST} !^skalys-bs\.fr$ [NC,OR]
   RewriteCond %{HTTPS} off
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-
-  # 3. www → sans www
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+  RewriteRule ^(.*)$ https://skalys-bs.fr/$1 [R=301,L]
 
   # 4. home.php / index.php → /
   RewriteCond %{THE_REQUEST} \s/+(?:home|index)\.php[\s?] [NC]
