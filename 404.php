@@ -7,6 +7,7 @@ $page_desc  = '';
 $home_url   = '/';
 $extra_css  = ['/assets/css/404.css'];
 $page_js    = '/assets/js/equipe.js';
+$robots_meta = 'noindex, follow';
 
 require 'components/header.php';
 ?>

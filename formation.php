@@ -98,7 +98,7 @@ require 'components/header.php';
 <section class="formation-hero">
   <div class="formation-hero-inner">
 
-    <a href="home.php#formations" class="formation-back">Toutes les formations</a>
+    <a href="/#formations" class="formation-back">Toutes les formations</a>
 
     <div class="formation-badge-row">
       <span class="formation-badge"><?= htmlspecialchars($formation['badge']) ?></span>

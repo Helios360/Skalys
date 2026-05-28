@@ -459,7 +459,7 @@ require 'components/header.php';
     <p class="reveal">Formations 100% gratuites. Rémunérées. En alternance. Avec une obsession : que vous soyez opérationnels avant tout le monde — IA incluse.</p>
     <div class="ia-cta-actions reveal">
       <a href="/candidature.php" class="btn btn-primary">Je candidate maintenant <span class="arrow">→</span></a>
-      <a href="home.php#formations" class="btn">Voir les formations</a>
+      <a href="/#formations" class="btn">Voir les formations</a>
     </div>
   </div>
 </section>

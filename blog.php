@@ -182,7 +182,7 @@ if (empty($posts)) {
   $static_posts = [
     [
       'title'      => "L'alternance à Skalys : comment ça marche ?",
-      'link'       => 'candidature.php',
+      'link'       => '/candidature.php',
       'date'       => time(),
       'date_label' => blog_format_date_fr(time()),
       'excerpt'    => "Découvrez le fonctionnement de l'alternance à Skalys : rythme, rémunération, OPCO, suivi pédagogique. Tout ce qu'il faut savoir avant de se lancer.",
@@ -190,7 +190,7 @@ if (empty($posts)) {
     ],
     [
       'title'      => "L'IA dans nos formations : pourquoi et comment",
-      'link'       => 'ia.php',
+      'link'       => '/ia.php',
       'date'       => strtotime('-7 days'),
       'date_label' => blog_format_date_fr(strtotime('-7 days')),
       'excerpt'    => "Pourquoi Skalys intègre l'IA dans toutes ses formations, et comment cela transforme la valeur de nos alternants sur le marché.",
@@ -198,7 +198,7 @@ if (empty($posts)) {
     ],
     [
       'title'      => 'Trouver son entreprise d\'alternance : 5 conseils qui marchent',
-      'link'       => 'faq.php#alternance',
+      'link'       => '/faq.php#alternance',
       'date'       => strtotime('-14 days'),
       'date_label' => blog_format_date_fr(strtotime('-14 days')),
       'excerpt'    => "CV, lettre, LinkedIn, mise en relation : nos conseils pour trouver rapidement une entreprise d'accueil avec l'accompagnement Skalys.",
@@ -206,7 +206,7 @@ if (empty($posts)) {
     ],
     [
       'title'      => 'Bac, Bac+2, Bac+3, Bac+5 : quel parcours pour quel métier ?',
-      'link'       => 'home.php#formations',
+      'link'       => '/#formations',
       'date'       => strtotime('-21 days'),
       'date_label' => blog_format_date_fr(strtotime('-21 days')),
       'excerpt'    => "Du Bac au Bac+5, panorama de nos parcours et des métiers auxquels chacun ouvre l'accès. CAP, BTS, Bachelor, Mastère — choisissez en connaissance de cause.",
@@ -214,7 +214,7 @@ if (empty($posts)) {
     ],
     [
       'title'      => 'Qualiopi, RNCP : ce que ces labels signifient vraiment pour vous',
-      'link'       => 'home.php#why',
+      'link'       => '/#why',
       'date'       => strtotime('-28 days'),
       'date_label' => blog_format_date_fr(strtotime('-28 days')),
       'excerpt'    => "On parle souvent de Qualiopi et de RNCP — mais qu'est-ce que cela change concrètement pour un alternant ? Décryptage simple.",
@@ -222,7 +222,7 @@ if (empty($posts)) {
     ],
     [
       'title'      => 'Recruter un alternant Skalys : aides, démarches et bonnes pratiques',
-      'link'       => 'recruter.php',
+      'link'       => '/recruter.php',
       'date'       => strtotime('-35 days'),
       'date_label' => blog_format_date_fr(strtotime('-35 days')),
       'excerpt'    => "Aides à l'embauche, OPCO, exonérations : tout ce que doit savoir une entreprise qui souhaite accueillir un alternant Skalys.",
