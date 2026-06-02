@@ -71,6 +71,16 @@ $robots_meta   = $robots_meta   ?? 'index, follow';
 <script type="application/ld+json"><?= json_encode($jsonld, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
 <?php endforeach; endif; ?>
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11545431711"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11545431711');
+</script>
 <body class="<?= $show_loader ? 'loading' : '' ?>">
 
 <?php if ($show_loader): ?>
