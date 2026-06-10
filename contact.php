@@ -8,68 +8,6 @@ $extra_css        = ['/assets/css/contact.css'];
 $sticky_cta_url   = '/candidature.php';
 $sticky_cta_label = 'Je candidate';
 
-// ===== TRAITEMENT DU FORMULAIRE =====
-$form_status = null;    // null | 'success' | 'error'
-$form_error  = '';
-$form_values = [
-  'name'    => '',
-  'email'   => '',
-  'phone'   => '',
-  'subject' => '',
-  'message' => '',
-  'profile' => '',
-];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['form'] ?? '') === 'contact') {
-  // Honeypot anti-spam : si rempli, on simule un succès silencieux.
-  if (!empty($_POST['website'] ?? '')) {
-    $form_status = 'success';
-  } else {
-    $form_values['name']    = trim((string)($_POST['name']    ?? ''));
-    $form_values['email']   = trim((string)($_POST['email']   ?? ''));
-    $form_values['phone']   = trim((string)($_POST['phone']   ?? ''));
-    $form_values['subject'] = trim((string)($_POST['subject'] ?? ''));
-    $form_values['message'] = trim((string)($_POST['message'] ?? ''));
-    $form_values['profile'] = trim((string)($_POST['profile'] ?? ''));
-
-    if ($form_values['name'] === '' || mb_strlen($form_values['name']) < 2) {
-      $form_status = 'error';
-      $form_error  = 'Merci d\'indiquer votre nom complet.';
-    } elseif (!filter_var($form_values['email'], FILTER_VALIDATE_EMAIL)) {
-      $form_status = 'error';
-      $form_error  = 'L\'adresse email semble invalide.';
-    } elseif ($form_values['message'] === '' || mb_strlen($form_values['message']) < 10) {
-      $form_status = 'error';
-      $form_error  = 'Votre message est un peu court — quelques phrases nous aideront à mieux vous répondre.';
-    } else {
-      $to      = 'contact@skalys-bs.fr';
-      $subject = '[Contact] ' . ($form_values['subject'] !== '' ? $form_values['subject'] : 'Nouveau message');
-      $body    = "Nouveau message depuis le formulaire de contact Skalys :\n\n"
-               . "Nom        : {$form_values['name']}\n"
-               . "Email      : {$form_values['email']}\n"
-               . "Téléphone  : " . ($form_values['phone'] !== '' ? $form_values['phone'] : '—') . "\n"
-               . "Profil     : " . ($form_values['profile'] !== '' ? $form_values['profile'] : '—') . "\n"
-               . "Objet      : " . ($form_values['subject'] !== '' ? $form_values['subject'] : '—') . "\n\n"
-               . "Message :\n{$form_values['message']}\n";
-
-      $headers  = "From: Site Skalys <no-reply@skalys-bs.fr>\r\n";
-      $headers .= "Reply-To: {$form_values['name']} <{$form_values['email']}>\r\n";
-      $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-      $sent = @mail($to, $subject, $body, $headers);
-
-      if ($sent) {
-        $form_status = 'success';
-        // Vidage des valeurs après envoi réussi
-        $form_values = array_fill_keys(array_keys($form_values), '');
-      } else {
-        $form_status = 'error';
-        $form_error  = 'Une erreur technique est survenue. Écrivez-nous directement à contact@skalys-bs.fr — nous répondons sous 48h.';
-      }
-    }
-  }
-}
-
 $jsonld_blocks = [
   [
     '@context' => 'https://schema.org',
@@ -89,7 +27,9 @@ $jsonld_blocks = [
 
 require 'components/header.php';
 
-$h = fn(string $v): string => htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
+$mailto_subject = rawurlencode('Contact depuis le site Skalys');
+$mailto_body    = rawurlencode("Bonjour Skalys,\n\n");
+$mailto_href    = 'mailto:contact@skalys-bs.fr?subject=' . $mailto_subject . '&body=' . $mailto_body;
 ?>
 
 <!-- ===== HERO ===== -->
@@ -104,7 +44,7 @@ $h = fn(string $v): string => htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
       <h1>Parlons<br><em>de votre projet.</em></h1>
       <p class="contact-hero-sub">Candidat, entreprise, famille ou partenaire — une seule équipe pour vous répondre. Pas de standard automatisé : un humain reprend contact sous 48h.</p>
       <div class="contact-hero-actions">
-        <a href="#form" class="btn btn-yellow">Écrire un message <span class="arrow">↓</span></a>
+        <a href="<?= htmlspecialchars($mailto_href) ?>" class="btn btn-yellow">Écrire un email <span class="arrow">→</span></a>
         <a href="tel:0670934298" class="btn contact-btn-ghost">06 70 93 42 98</a>
       </div>
     </div>
@@ -135,26 +75,22 @@ $h = fn(string $v): string => htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
   </div>
 </section>
 
-<!-- ===== FORMULAIRE ===== -->
+<!-- ===== ÉCRIRE UN EMAIL ===== -->
 <section class="contact-form-section" id="form">
   <div class="contact-form-inner">
 
     <aside class="contact-form-aside">
-      <div class="section-label"><span class="num">01</span> Formulaire</div>
-      <h2 class="section-h2">Un message,<br><em>une réponse.</em></h2>
-      <p class="contact-form-aside-text">Précisez votre profil et l'objet de votre demande — l'équipe vous redirige vers le bon interlocuteur dès la réception.</p>
+      <div class="section-label"><span class="num">01</span> Nous écrire</div>
+      <h2 class="section-h2">Un email,<br><em>une réponse.</em></h2>
+      <p class="contact-form-aside-text">Un clic ouvre votre messagerie avec notre adresse pré-remplie. L'équipe Skalys vous répond sous 48h ouvrées.</p>
 
       <ul class="contact-form-aside-list">
         <li><span>01</span>Réponse humaine sous 48h ouvrées.</li>
-        <li><span>02</span>Données traitées en France, conservées 2 ans.</li>
+        <li><span>02</span>Pas de standard automatisé.</li>
         <li><span>03</span>Aucune transmission à des tiers commerciaux.</li>
       </ul>
 
       <div class="contact-form-aside-channels">
-        <a href="mailto:contact@skalys-bs.fr" class="contact-form-aside-channel">
-          <span>Préférer l'email direct</span>
-          <strong>contact@skalys-bs.fr <span class="arrow">→</span></strong>
-        </a>
         <a href="tel:0670934298" class="contact-form-aside-channel">
           <span>Préférer un appel</span>
           <strong>06 70 93 42 98 <span class="arrow">→</span></strong>
@@ -163,88 +99,15 @@ $h = fn(string $v): string => htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
     </aside>
 
     <div class="contact-form-card">
-
-      <?php if ($form_status === 'success'): ?>
-        <div class="contact-form-alert contact-form-alert--success" role="status">
-          <div class="contact-form-alert-label">Message envoyé</div>
-          <h3>Merci, on a bien reçu votre message.</h3>
-          <p>Un membre de l'équipe Skalys vous répond sous 48h ouvrées. En attendant, vous pouvez explorer nos formations ou candidater directement.</p>
-          <div class="contact-form-alert-actions">
-            <a href="/candidature.php" class="btn btn-primary">Je candidate <span class="arrow">→</span></a>
-            <a href="/#formations" class="btn">Voir les formations</a>
-          </div>
+      <div class="contact-form-alert contact-form-alert--success" role="status">
+        <div class="contact-form-alert-label">Email direct</div>
+        <h3>Écrivez-nous à <a href="<?= htmlspecialchars($mailto_href) ?>">contact@skalys-bs.fr</a></h3>
+        <p>Précisez votre profil (candidat·e, parent, entreprise, partenaire…) et l'objet de votre demande. L'équipe Skalys vous redirige vers le bon interlocuteur dès la réception.</p>
+        <div class="contact-form-alert-actions">
+          <a href="<?= htmlspecialchars($mailto_href) ?>" class="btn btn-primary">Ouvrir mon email <span class="arrow">→</span></a>
+          <a href="tel:0670934298" class="btn">Appeler 06 70 93 42 98</a>
         </div>
-      <?php else: ?>
-
-        <?php if ($form_status === 'error'): ?>
-          <div class="contact-form-alert contact-form-alert--error" role="alert">
-            <strong>Oups —</strong> <?= $h($form_error) ?>
-          </div>
-        <?php endif; ?>
-
-        <form class="contact-form" method="post" action="/contact.php#form" novalidate>
-          <input type="hidden" name="form" value="contact">
-          <!-- Honeypot anti-spam (masqué aux utilisateurs) -->
-          <div class="contact-form-hp" aria-hidden="true">
-            <label>Ne pas remplir<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
-          </div>
-
-          <div class="contact-form-row">
-            <label class="contact-field">
-              <span class="contact-field-label">Nom complet <em>*</em></span>
-              <input type="text" name="name" required minlength="2" autocomplete="name" value="<?= $h($form_values['name']) ?>" placeholder="Prénom Nom">
-            </label>
-
-            <label class="contact-field">
-              <span class="contact-field-label">Email <em>*</em></span>
-              <input type="email" name="email" required autocomplete="email" value="<?= $h($form_values['email']) ?>" placeholder="vous@exemple.fr">
-            </label>
-          </div>
-
-          <div class="contact-form-row">
-            <label class="contact-field">
-              <span class="contact-field-label">Téléphone</span>
-              <input type="tel" name="phone" autocomplete="tel" value="<?= $h($form_values['phone']) ?>" placeholder="06 12 34 56 78">
-            </label>
-
-            <label class="contact-field">
-              <span class="contact-field-label">Vous êtes</span>
-              <span class="contact-select-wrap">
-                <select name="profile">
-                  <?php
-                  $profiles = ['', 'Candidat·e', 'Parent / famille', 'Entreprise', 'Partenaire / institution', 'Presse', 'Autre'];
-                  foreach ($profiles as $p):
-                    $label = $p === '' ? 'Sélectionner…' : $p;
-                    $sel   = $form_values['profile'] === $p ? ' selected' : '';
-                  ?>
-                  <option value="<?= $h($p) ?>"<?= $sel ?>><?= $h($label) ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </span>
-            </label>
-          </div>
-
-          <label class="contact-field">
-            <span class="contact-field-label">Objet</span>
-            <input type="text" name="subject" maxlength="120" value="<?= $h($form_values['subject']) ?>" placeholder="Ex : Candidature BTS NDRC — rentrée 2026">
-          </label>
-
-          <label class="contact-field">
-            <span class="contact-field-label">Message <em>*</em></span>
-            <textarea name="message" required minlength="10" rows="6" placeholder="Quelques mots sur votre projet, votre besoin ou votre question."><?= $h($form_values['message']) ?></textarea>
-          </label>
-
-          <div class="contact-form-footer">
-            <button type="submit" class="btn btn-primary contact-form-submit">
-              Envoyer le message <span class="arrow">→</span>
-            </button>
-            <p class="contact-form-legal">
-              En envoyant ce formulaire, vous acceptez que vos informations soient utilisées par AJ-Formation SARL pour traiter votre demande. Détails sur la <a href="/politique-confidentialite.php">politique de confidentialité</a>.
-            </p>
-          </div>
-        </form>
-
-      <?php endif; ?>
+      </div>
     </div>
 
   </div>
