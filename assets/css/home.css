@@ -1,22 +1,22 @@
 /* ===== SIDE INDEX ===== */
 .side-index {
-  position: fixed;
-  left: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 50;
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.9rem 2rem;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .side-index a {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.6rem;
   color: var(--text-soft);
   opacity: 0.6;
   transition: all 0.3s;
@@ -33,8 +33,8 @@
   color: var(--navy);
   opacity: 1;
 }
-.side-index a.active::before { width: 36px; background: var(--yellow); height: 2px; }
-@media (max-width: 1280px) { .side-index { display: none; } }
+.side-index a.active::before { width: 28px; background: var(--yellow); height: 2px; }
+@media (max-width: 880px) { .side-index { display: none; } }
 
 /* ===== HERO ===== */
 .hero {
