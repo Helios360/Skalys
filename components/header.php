@@ -104,6 +104,18 @@ $robots_meta   = $robots_meta   ?? 'index, follow';
 <!-- ===== SCROLL PROGRESS ===== -->
 <div class="scroll-prog" id="scrollProg"></div>
 
+<!-- ===== TOP CONTACT BAR ===== -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <a href="https://maps.google.com/?q=8+avenue+Flandres+Dunkerque+60200+Compiègne" target="_blank" rel="noopener" class="top-bar-link">
+      <span class="top-bar-ico" aria-hidden="true">⌖</span> 8 av. Flandres Dunkerque, 60200 Compiègne
+    </a>
+    <a href="tel:0670934298" class="top-bar-link">
+      <span class="top-bar-ico" aria-hidden="true">☎</span> 06 70 93 42 98
+    </a>
+  </div>
+</div>
+
 <!-- ===== TOP TICKER ===== -->
 <div class="ticker-top">
   <div class="ticker-track">
@@ -164,11 +176,15 @@ $robots_meta   = $robots_meta   ?? 'index, follow';
               <a href="/faq.php" class="nav-dropdown-item">
                 <span class="nav-dropdown-title">FAQ</span>
               </a>
+              <a href="/contact.php" class="nav-dropdown-item">
+                <span class="nav-dropdown-title">Contact</span>
+              </a>
             </div>
           </div>
         </div>
       </li>
       <li><a href="<?= $home_url ?>#process">Admission</a></li>
+      <li><a href="/contact.php">Contact</a></li>
     </ul>
     <div class="nav-cta">
       <a href="/recruter.php" class="btn">Recruter un alternant</a>

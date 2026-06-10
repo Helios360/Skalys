@@ -78,16 +78,16 @@ $social_target = fn(string $href) => $href === '#' ? '' : ' target="_blank"';
     <div class="footer-col">
       <h5>Contact</h5>
       <ul>
-        <li>8 av. Flandres Dunkerque<br>60200 Compiègne</li>
+        <li>
+          <a href="https://maps.google.com/?q=8+avenue+Flandres+Dunkerque+60200+Compiègne" target="_blank" rel="noopener">
+            8 av. Flandres Dunkerque<br>60200 Compiègne
+          </a>
+        </li>
+        <li><a href="tel:0670934298">06 70 93 42 98</a></li>
         <li><a href="mailto:contact@skalys-bs.fr">contact@skalys-bs.fr</a></li>
+        <li><a href="/contact.php">Formulaire de contact</a></li>
       </ul>
       <div class="footer-map" data-consent-map>
-        <!-- Bloc affiché tant que l'utilisateur n'a pas accepté les cookies « cartes ». RGPD : pas de requête tiers (OpenStreetMap) sans consentement préalable. -->
-        <div class="footer-map-consent" data-consent-placeholder>
-          <p class="footer-map-consent-text">La carte est fournie par OpenStreetMap. Pour l'afficher, votre adresse IP est transmise à un service tiers.</p>
-          <button type="button" class="footer-map-consent-btn" data-consent-accept>Afficher la carte</button>
-          <a href="https://maps.google.com/?q=8+avenue+Flandres+Dunkerque+60200+Compiègne" target="_blank" rel="noopener noreferrer" class="footer-map-consent-link">Ouvrir dans Google Maps →</a>
-        </div>
         <a href="https://maps.google.com/?q=8+avenue+Flandres+Dunkerque+60200+Compiègne" target="_blank" rel="noopener noreferrer" class="footer-map-link" aria-label="Voir Skalys sur Google Maps" data-consent-frame hidden>
           <img
             src="/assets/images/image.png"
@@ -106,6 +106,11 @@ $social_target = fn(string $href) => $href === '#' ? '' : ' target="_blank"';
   </div>
   <div class="footer-bottom">
     <span>© 2026 Skalys Business School / AJ-Formation SARL</span>
+    <span class="footer-contact-inline">
+      <a href="https://maps.google.com/?q=8+avenue+Flandres+Dunkerque+60200+Compiègne" target="_blank" rel="noopener">8 av. Flandres Dunkerque, 60200 Compiègne</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <a href="tel:0670934298">06 70 93 42 98</a>
+    </span>
     <span class="footer-legal-links">
       <a href="/mentions-legales.php">Mentions légales</a> /
       <a href="/politique-confidentialite.php">Politique de confidentialité</a> /
