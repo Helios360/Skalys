@@ -13,6 +13,7 @@ $static_pages = [
   ['/faq.php',                       '0.7', 'monthly'],
   ['/recruter.php',                  '0.8', 'monthly'],
   ['/candidature.php',               '0.9', 'monthly'],
+  ['/contact.php',                   '0.8', 'monthly'],
   ['/qualiopi.php',                  '0.4', 'yearly'],
   ['/accessibilite.php',             '0.3', 'yearly'],
   ['/cgv.php',                       '0.3', 'yearly'],
